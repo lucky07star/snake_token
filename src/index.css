@@ -6,7 +6,7 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: auto;
   /* background-color: #87B497 !important; */
   background: radial-gradient(circle, #87B49750, #87B497);
   font-family: 'Silkscreen';
@@ -196,6 +196,10 @@ body {
   font-size: 0.8rem !important;
 }
 
+.fs-8 {
+  font-size: 0.7rem;
+}
+
 @media (min-width: 768px) {
   .fs-lg-1 {
     font-size: 4rem !important;
@@ -364,9 +368,26 @@ body {
   .fs-xxl-14 {
     font-size: 2em !important;
   }
+
+  .fs-xxl-15 {
+    font-size: 1.75em !important;
+  }
+
+  .fs-xxl-16 {
+    font-size: 1.5em !important;
+  }
+
+  .fs-xxl-17 {
+    font-size: 1.25em !important;
+  }
 }
 
 /* row & col */
+.row,
+.gutter-1 {
+  --bs-gutter-x: 0.7rem;
+}
+
 @media (min-width: 600px) {
   .ex-col-sm-1 {
     flex: 0 0 auto;
@@ -591,9 +612,40 @@ body {
   }
 }
 
+/* animations */
+@keyframes showSlowly {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hidelowly {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 /* main header */
+.main-header {
+  opacity: 1;
+  animation-name: showSlowly;
+  animation-duration: 0.4s;
+}
+
 .main-header-title {
   display: none;
+}
+
+.shadow-bottom {
+  box-shadow: 5px 0 10px #353535;
 }
 
 @media (min-width: 600px) {
@@ -732,6 +784,12 @@ body {
 }
 
 /* safety & transparency */
+.custom-checkbox-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 .custom-checkbox {
   display: none;
 }
@@ -764,6 +822,38 @@ body {
   top: -4px;
   color: #A9E000;
   font-size: 32px;
+}
+
+@media (max-width: 600px) {
+  .custom-label {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background-color: #131200;
+    border: 5px solid #A9E000;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .custom-checkbox:checked+.custom-label::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+  }
+
+  .custom-checkbox:checked+.custom-label::before {
+    content: '✔';
+    position: absolute;
+    left: 4px;
+    top: -8px;
+    color: #A9E000;
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -856,4 +946,39 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.icon-button {
+  width: 45px;
+  height: 45px;
+}
+
+.search-button {
+  width: 45px;
+  height: 45px;
+}
+
+.icon-text {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .icon-button {
+    width: 75px;
+    height: 75px;
+  }
+
+  .icon-text {
+    display: contents;
+  }
+
+  .search-button {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.text-overflow {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }

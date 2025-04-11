@@ -14,16 +14,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
 
         <Route path="/get-started" element={<GetStartedPage />} />
-        <Route path="/get-started/what-is-snake" element={<GetStartedPage pagename="what-is-snake" />} />
-        <Route path="/get-started/how-it-works" element={<GetStartedPage pagename="how-it-works" />} />
-        <Route path="/get-started/tokenomics" element={<GetStartedPage pagename="tokenomics" />} />
-        <Route path="/get-started/roadmap" element={<GetStartedPage pagename="roadmap" />} />
-        <Route path="/get-started/safety-transparency" element={<GetStartedPage pagename="safety-transparency" />} />
-        <Route path="/get-started/why-join" element={<GetStartedPage pagename="why-join" />} />
-        <Route path="/get-started/get-involved" element={<GetStartedPage pagename="get-involved" />} />
 
         <Route path="/home" element={<Home />} />
-        <Route path="/home/claim-rewards" element={<Home pagename="claim-rewards" />} />
 
         <Route path="/tweet-mining" element={<TweetMiningPage />} />
         <Route path="/tweet-mining/page1" element={<TweetMiningPage page_number={1} />} />

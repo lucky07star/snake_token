@@ -14,19 +14,19 @@ function MessageTable({ height = '38vh', data, }: MessageTableProps) {
                     data.map((item, index) => {
                         const { icon, username, userid, message } = item;
                         return (
-                            <div className="w-100 border-bottom border-gray-300 p-3" key={index}>
+                            <div className="w-100 border-bottom border-gray-300 p-2" key={index}>
                                 <div className="user-info d-flex justify-content-between align-items-center">
                                     <div className="d-flex justify-content-start align-items-center mb-2">
                                         <img src={icon} style={{ width: '60px', height: '60px' }} alt="icon" />
-                                        <div className="px-2">
-                                            <div className="px-1 text-gray-400">{username}</div>
-                                            <div className="px-1 text-gray-400">{userid}</div>
+                                        <div className="px-2 w-50">
+                                            <div className="px-1 text-gray-400 fs-6 fs-xxl-16 text-overflow">{username}</div>
+                                            <div className="px-1 text-gray-400 fs-7 fs-xxl-17 text-overflow">{userid}</div>
                                         </div>
                                     </div>
-                                    <button className="border border-0 bg-light-green-950 px-4 py-2">Follow</button>
+                                    <button className="border border-0 bg-light-green-950 px-2 py-2 fs-7">Follow</button>
                                 </div>
                                 <div className="user-message w-100">
-                                    <p className="text-gray-400 m-0" style={{ fontFamily: 'Arial' }}>{message}</p>
+                                    <p className="text-gray-400 m-0 fs-7 fs-xxl-17" style={{ fontFamily: 'Arial' }}>{message}</p>
                                 </div>
                             </div>
                         );

@@ -22,9 +22,9 @@ function Progressbar({ value = 0 }: ProgressbarProps) {
                     let bg_color = '';
                     bg_color = i < value ? 'bg-light-green-950' : 'bg-gray-400';
 
-                    divs.push(<div key={i} className={`border border-3 border-black ${rounded} ${bg_color}`} style={{
+                    divs.push(<div key={i} className={`border border-2 border-black ${rounded} ${bg_color}`} style={{
                         width: '10%',
-                        height: '50px'
+                        height: '48px'
                     }}></div>);
                 }
                 return divs;

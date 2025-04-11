@@ -22,14 +22,14 @@ interface GenerateMemeProps {
 
 function GenerateMeme({ page_number = 1 }: GenerateMemeProps) {
     return (
-        <div className="w-100 p-3" style={{ height: "100vh" }}>
-            <div className="d-flex gap-4" style={{ height: "calc(100vh-70px)", paddingTop: '70px' }}>
+        <div className="w-100 p-3">
+            <div className="d-flex gap-4" style={{ height: "calc(100vh-60px)", paddingTop: '55px' }}>
                 <Menu />
-                <div className="item-stretch" style={{ width: 'calc(100% - 200px)' }}>
+                <div className="item-stretch" style={{ width: '100%' }}>
                     {(() => {
                         return <>
                             <div className="d-flex justify-content-between gap-4">
-                                <div className="item-stretch" style={{ width: 'calc(100% - 150px)', height: '86vh' }}>
+                                <div className="item-stretch" style={{ width: 'calc(100% - 150px)', minHeight: '86vh' }}>
                                     <div className="w-100">
                                         <div className="fs-1" style={{ lineHeight: 'normal' }}>Generate Meme</div>
                                         <hr className="border border-dashed border-black border-3 opacity-100"></hr>
@@ -39,24 +39,24 @@ function GenerateMeme({ page_number = 1 }: GenerateMemeProps) {
                                             <textarea placeholder='input tweet test' className='w-80 py-3 px-3' style={{ width: '90%' }} rows={6}></textarea>
                                         </div>
                                         <hr className="border border-dashed border-black border-3 opacity-100"></hr>
-                                        <button className={`border border-black border-3 ${page_number === 1 ? 'bg-gray-300' : 'bg-light-green-950'} fs-4 px-5`} style={{ lineHeight: 'normal', height: '60px' }}>
-                                            Generate <IconHourGlass />
+                                        <button className={`border border-black border-3 ${page_number === 1 ? 'bg-gray-300' : 'bg-light-green-950'} fs-6 fs-xxl-13 px-3`} style={{ lineHeight: 'normal', height: '60px', width: 'calc(100% - 20px)' }}>
+                                            Generate {page_number === 2 ? <IconHourGlass /> : null}
                                         </button>
                                         <hr className="border border-dashed border-black border-3 opacity-100"></hr>
                                         {page_number === 2 ? <>
                                             <div className="d-flex justify-content-center align-items-center gap-1">
-                                                <button className="fs-5 bg-green-960 border border-0 py-2 px-5 text-light-green-950">Pause <IconPause /></button>
-                                                <button className="fs-5 bg-green-960 border border-0 py-2 px-5 text-light-green-950">Stop <IconStop /></button>
+                                                <button className="fs-6 fs-xxl-15 bg-green-960 border border-0 py-2 px-2 text-light-green-950">Pause <IconPause /></button>
+                                                <button className="fs-6 fs-xxl-15 bg-green-960 border border-0 py-2 px-2 text-light-green-950">Stop <IconStop /></button>
                                             </div>
                                             <hr className="border border-dashed border-black border-3 opacity-100"></hr>
                                         </> : null}
                                         {page_number === 3 ? <>
                                             <div className="row justify-content-around px-3">
-                                                <button className='text-center text-white bg-black border border-0 fs-7' style={{ width: '75px', height: '75px' }} aria-label="Like">
+                                                <button className='text-center text-white bg-black border border-0 fs-7 mb-2' style={{ width: '75px', height: '75px' }} aria-label="Like">
                                                     <IconEdit />
                                                     <div>LIKE</div>
                                                 </button>
-                                                <button className='text-center text-white bg-black border border-0 fs-7' style={{ width: '75px', height: '75px' }} aria-label="Reply">
+                                                <button className='text-center text-white bg-black border border-0 fs-7 mb-2' style={{ width: '75px', height: '75px' }} aria-label="Reply">
                                                     <IconReply />
                                                     <div>REPLY</div>
                                                 </button>
@@ -74,7 +74,7 @@ function GenerateMeme({ page_number = 1 }: GenerateMemeProps) {
                                     </div>
                                 </div>
                                 {page_number === 3 ? null : <TableMiningProgress container_height="86vh" />}
-                                {page_number === 3 ? <TableMiningProgress container_height="86vh" table={<MessageTable height="61vh" data={TableData.message_table} />} /> : null}
+                                {page_number === 3 ? <TableMiningProgress container_height="86vh" table={<MessageTable height="58vh" data={TableData.message_table} />} /> : null}
                             </div>
                         </>
                     })()}
