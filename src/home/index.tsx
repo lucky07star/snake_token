@@ -11,17 +11,24 @@ import { ReactComponent as IconColoredLogo } from '../svgs/logo-colored.svg';
 import QRCodeComponent from "../components/qrcode";
 import { useState } from "react";
 
+import { usePhantom } from "../hooks/usePhantom";
+
 interface HomeProps {
     pagename?: string
 }
 
 function Home({ pagename = 'dashboard' }: HomeProps) {
+    const { walletAvailable, publicKey, connect } = usePhantom();
     // state
     const [pageName, setPageName] = useState<string | undefined>(pagename);
 
     // your rewards button click event
     const showClaimYourRewards = () => {
         setPageName("claim-rewards");
+    }
+
+    const handleWallet = () => {
+        
     }
 
     return (
@@ -112,7 +119,7 @@ function Home({ pagename = 'dashboard' }: HomeProps) {
                                 <hr className="border border-dashed border-black border-3 opacity-100"></hr>
                                 <div className="d-flex justify-content-center align-items-center gap-5">
                                     <button className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
-                                    <button className="fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5">Link Wallet</button>
+                                    <button onClick={handleWallet} className="fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5">Link Wallet</button>
                                 </div>
                                 <hr className="border border-dashed border-black border-3 opacity-100 mt-3 my-0"></hr>
                             </div> : null}
