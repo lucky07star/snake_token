@@ -87,11 +87,11 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
 
                 // render snake
                 if (_snake) {
-                    let index_x: number = _snake.x
-                    let index_y: number = _snake.y
+                    let index_x: number = _snake.x;
+                    let index_y: number = _snake.y;
 
                     _snake.nodes.forEach(node => {
-                        context.fillStyle = node.color
+                        context.fillStyle = node.color;
                         if (node.index === 0) { // header
                             context.fillRect(index_x * cellSize - cellSize / 2 - 1, index_y * cellSize - cellSize / 2 - 1, cellSize * 2 - 2, cellSize * 2 - 2)
                             if (node.vector === 0) { // bottom
@@ -114,7 +114,7 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
                                 context.fillRect(index_x * cellSize + cellSize / 2 - 1, index_y * cellSize - 1, cellSize / 2 - 2, cellSize - 2)
                             }
                         } else { // body
-                            context.fillRect(index_x * cellSize - 1, index_y * cellSize - 1, cellSize - 2, cellSize - 2)
+                            context.fillRect(index_x * cellSize - 1, index_y * cellSize - 1, cellSize - 2, cellSize - 2);
                         }
 
                         // change the position of next node

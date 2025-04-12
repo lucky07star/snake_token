@@ -43,10 +43,10 @@ function GetStartedPage({ bar_status = 0 }: GetStartedPageProps) {
             {(() => {
                 return barStatus === 0 ? <LandingHeader /> : <MainHeader />
             })()}
-            <div className='w-100 p-2 p-md-4 p-lg-4' style={{ height: '90vh' }}>
+            <div className='w-100 p-2 p-md-4 p-lg-4' style={{ minHeight: '90vh' }}>
                 <DashboardPage />
             </div>
-            <div className='w-100 p-2 p-md-4 p-lg-4' style={{ height: '90vh' }}>
+            <div className='w-100 p-2 p-md-4 p-lg-4' style={{ minHeight: '90vh' }}>
                 <WhatIsSnakePage />
             </div>
             <div className='w-100 p-2 p-md-4 p-lg-4' style={{ minHeight: '90vh' }}>

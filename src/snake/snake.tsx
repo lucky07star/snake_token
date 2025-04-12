@@ -66,6 +66,11 @@ export namespace Snake {
         }
     }
 
+    // get snake node item
+    export function getSnakeNode(snake: Snake, index: number): SnakeNode {
+        return snake.nodes[index];
+    }
+
     // set snake aspect
     export function setSnakeVectors(snake: Snake, vectors: Array<number>): Snake {
         for (let i = 0; i < snake.node_count; i++) {

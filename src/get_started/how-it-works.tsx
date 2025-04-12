@@ -13,9 +13,9 @@ function HowItWorksPage() {
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
                             <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100"></hr>
+                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
                             </div>
-                            <p className="fs-4 fs-lg-10 p-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
                         </div>
                     </div>
                 </div>
@@ -25,9 +25,9 @@ function HowItWorksPage() {
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>INSTANT REWARDS:</h2>
                             <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100"></hr>
+                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
                             </div>
-                            <p className="fs-4 fs-lg-10 p-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
                         </div>
                     </div>
                 </div>
@@ -37,9 +37,9 @@ function HowItWorksPage() {
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Deflationary & Scarce:</h2>
                             <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100"></hr>
+                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
                             </div>
-                            <p className="fs-4 fs-lg-10 p-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
                         </div>
                     </div>
                 </div>
@@ -49,9 +49,9 @@ function HowItWorksPage() {
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
                             <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100"></hr>
+                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
                             </div>
-                            <p className="fs-4 fs-lg-10 p-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
                         </div>
                     </div>
                 </div>

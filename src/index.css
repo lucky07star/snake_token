@@ -689,12 +689,12 @@ body {
 }
 
 .box-height-48vh {
-  height: 48vh;
+  min-height: 'auto';
 }
 
 @media (min-width: 768px) {
   .box-height-48vh {
-    max-height: 52vh;
+    height: 52vh;
   }
 }
 
