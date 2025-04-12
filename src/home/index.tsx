@@ -1,4 +1,6 @@
 
+import { useState } from "react";
+
 import Menu from "../partials/menu";
 
 import TableMiningProgress from "../partials/mining-progress-table";
@@ -9,7 +11,6 @@ import TableData from "../data";
 // icons
 import { ReactComponent as IconColoredLogo } from '../svgs/logo-colored.svg';
 import QRCodeComponent from "../components/qrcode";
-import { useState } from "react";
 
 import { usePhantom } from "../hooks/usePhantom";
 
@@ -28,7 +29,7 @@ function Home({ pagename = 'dashboard' }: HomeProps) {
     }
 
     const handleWallet = () => {
-        
+
     }
 
     return (

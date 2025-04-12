@@ -2,7 +2,7 @@
 import { ReactComponent as IconSmallLogo } from "../svgs/logo-small.svg";
 
 function MainHeader() {
-    
+
     return (
         <>
             <div style={{ height: '10vh' }}></div>
@@ -12,7 +12,7 @@ function MainHeader() {
                     <span className="fs-1 fs-lg-7 fs-xl-7 text-white main-header-title">SNAKE.AI</span>
                 </div>
                 <div className="d-flex justify-content-end align-items-center gap-3 h-100 px-2">
-                    <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login`} className="border border-0 fs-4 fw-bold px-3 text-decoration-none pt-1" style={{ height: "6vh", backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
+                    <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login`} className="border border-0 fs-4 fw-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
                 </div>
             </div>
         </>

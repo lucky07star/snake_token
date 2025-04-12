@@ -1,7 +1,8 @@
+
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as IconLeftLogo } from "../svgs/logo-left.svg";
 
-function SecondPage() {
+function MainLanding() {
     const navigate = useNavigate()
     return (
         <div className="d-flex justify-content-center align-items-center border border-5 border-black w-100 p-3" style={{ height: "82vh" }}>
@@ -18,4 +19,4 @@ function SecondPage() {
     );
 }
 
-export default SecondPage;
+export default MainLanding;
