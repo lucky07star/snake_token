@@ -24,7 +24,7 @@ function Progressbar({ value = 0 }: ProgressbarProps) {
 
                     divs.push(<div key={i} className={`border border-2 border-black ${rounded} ${bg_color}`} style={{
                         width: '10%',
-                        height: '48px'
+                        height: '45px'
                     }}></div>);
                 }
                 return divs;

@@ -12,43 +12,43 @@ interface TableProps {
 
 function CustomTable({ height = '38vh', title, data, action_icons }: TableProps) {
     return (
-        <div className="">
+        <div className="mb-3">
             <div className="fs-1 mb-2" style={{ lineHeight: 'normal' }}>{title}</div>
-            <div className='table-container' style={{ height: `${height}`, overflowY: 'scroll' }}>
+            <div className='table-container' style={{ maxHeight: `${height}`, overflowY: 'scroll' }}>
                 {data.length === 0 ? (
                     <div className="fs-3 text-center p-3 border border-1">No Data</div>
                 ) : (
                     data.map((item, index) => {
                         const { text, date } = item;
                         return (
-                            <div className="d-flex justify-content-between align-items-center gap-2" key={index}>
+                            <div className="d-flex justify-content-between align-items-center gap-2 mb-2" key={index}>
                                 <div className="item-data">
-                                    <div className="px-2 fs-7 fs-lg-13 fs-xl-14 fs-xxl-16 fw-bolder">{text}</div>
-                                    <div className="px-3 fs-8 fs-lg-14 fs-xl-15 fs-xxl-17">{date}</div>
+                                    <div className="px-2 fs-7 fs-lg-13 fs-xl-14 fs-xxl-16 fw-bolder" style={{ lineHeight: 'normal' }}>{text}</div>
+                                    <div className="px-3 fs-8 fs-lg-14 fs-xl-15 fs-xxl-17" style={{ lineHeight: 'normal' }}>{date}</div>
                                 </div>
                                 <div className="item-actions d-flex justify-content-between gap-1 mb-1 px-2">
                                     {action_icons.includes("like") && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Like">
-                                            <IconLike />
-                                            <span className='icon-text'>LIKE</span>
+                                            <div><IconLike className='table-icon' /></div>
+                                            <div className='icon-text'>LIKE</div>
                                         </button>
                                     )}
                                     {action_icons.includes('reply') && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Reply">
-                                            <IconReply />
-                                            <span className='icon-text'>REPLY</span>
+                                            <div><IconReply className='table-icon' /></div>
+                                            <div className='icon-text'>REPLY</div>
                                         </button>
                                     )}
                                     {action_icons.includes('retweet') && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Retweet">
-                                            <IconRetweet />
-                                            <span className='icon-text'>RETWEET</span>
+                                            <div><IconRetweet className='table-icon' /></div>
+                                            <div className='icon-text'>RETWEET</div>
                                         </button>
                                     )}
                                     {action_icons.includes('delete') && (
                                         <button className='text-center text-white bg-danger border border-0 rounded-1 fs-7 icon-button' aria-label="Delete">
-                                            <IconTrash />
-                                            <span className='icon-text'>DELETE</span>
+                                            <div><IconTrash className='table-icon' /></div>
+                                            <div className='icon-text'>DELETE</div>
                                         </button>
                                     )}
                                 </div>

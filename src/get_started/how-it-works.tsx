@@ -12,10 +12,8 @@ function HowItWorksPage() {
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
-                            <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
-                            </div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
+                            <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham-semi-bold" style={{ lineHeight: 'normal' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
                         </div>
                     </div>
                 </div>
@@ -24,10 +22,8 @@ function HowItWorksPage() {
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>INSTANT REWARDS:</h2>
-                            <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
-                            </div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
+                            <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham-semi-bold" style={{ lineHeight: 'normal' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
                         </div>
                     </div>
                 </div>
@@ -36,10 +32,8 @@ function HowItWorksPage() {
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Deflationary & Scarce:</h2>
-                            <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
-                            </div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
+                            <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham" style={{ lineHeight: 'normal' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
                         </div>
                     </div>
                 </div>
@@ -48,10 +42,8 @@ function HowItWorksPage() {
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
-                            <div className="px-3">
-                                <hr className="border border-dashed border-black border-3 opacity-100 mb-2"></hr>
-                            </div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-lg-4" style={{ lineHeight: 'normal', fontFamily: 'Gotham' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
+                            <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
+                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham" style={{ lineHeight: 'normal' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
                         </div>
                     </div>
                 </div>
