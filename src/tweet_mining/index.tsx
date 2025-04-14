@@ -73,15 +73,15 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                     return !mobileState || (mobileState && selectedTab === 'menu') ?
                         <div className={`${!mobileState ? 'd-flex justify-content-center align-items-center flex-wrap border border-dashed' : ''} py-5 main-menu-container`}>
                             <div className={`d-flex justify-content-center align-items-center flex-wrap ${!mobileState ? 'h-md-75' : ''}`}>
-                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('home'); setSelectedTab('dashboard'); setShowMiningProgress(false); }}>
+                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('home'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'home' || pageState === 'claim-rewards' ? <IconHomeSelected className="main-menu-icon" /> : <IconHome className="main-menu-icon" />}
                                     {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Home</div> : ''}
                                 </div>
-                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('mining'); setSelectedTab('dashboard'); setShowMiningProgress(false); }}>
+                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('mining'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'mining' ? <IconMiningSelected className="main-menu-icon" /> : <IconMining className="main-menu-icon" />}
                                     {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Mining</div> : ''}
                                 </div>
-                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('claim'); setSelectedTab('dashboard'); setShowMiningProgress(false); }}>
+                                <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('claim'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'claim' ? <IconClaimSelected className="main-menu-icon" /> : <IconClaim className="main-menu-icon" />}
                                     {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Claim</div> : ''}
                                 </div>
@@ -91,10 +91,10 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                 {/* Dashboard */}
                 {(() => {
                     return !mobileState || (mobileState && selectedTab === 'dashboard' && !showMiningProgress) ?
-                        <div className="item-stretch mobile-item mobile-item-fixed" style={{ height: 'calc(100vh - 130px)' }}>
+                        <div className="item-stretch mobile-item mobile-item-fixed" style={{ minHeight: 'calc(100vh - 130px)' }}>
                             {(() => {
                                 if (pageState === 'home') {
-                                    return <div className="item-stretch border-dashed" style={{ height: `${page_number === 1 ? 'calc(65vh - 130px)' : 'calc(60vh - 130px)'}` }}>
+                                    return <div className="item-stretch border-dashed" style={{ minHeight: `${page_number === 1 ? 'calc(65vh - 130px)' : 'calc(60vh - 130px)'}` }}>
                                         <div className="w-100 py-md-3 py-lg-5 border-5">
                                             {
                                                 mobileState ? <div className="d-flex justify-content-center align-items-center text-center">
@@ -118,7 +118,6 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                                                         <button className="fs-6 fs-xxl-15 bg-green-960 border border-0 py-2 px-2 text-light-green-950">Pause <IconPause /></button>
                                                         <button className="fs-6 fs-xxl-15 bg-green-960 border border-0 py-2 px-2 text-light-green-950">Stop <IconStop /></button>
                                                     </div>
-                                                    <div className="separator py-2"><div className="separator-3 separator-dashed separator-black"></div></div>
                                                 </div> : ''
                                             }
                                             {

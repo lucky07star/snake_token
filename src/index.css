@@ -1221,13 +1221,13 @@ body {
   }
 
   .item-dash {
-    height: calc(100vh - 320px) !important;
+    min-height: calc(100vh - 320px) !important;
     border: 3px dashed black !important;
     padding: 1rem !important;
   }
 
   .item-dash2 {
-    height: calc(100vh - 220px) !important;
+    min-height: calc(100vh - 220px) !important;
     border: 3px dashed black !important;
     padding: 1rem !important;
   }

@@ -63,7 +63,7 @@ function Home() {
                 </div>
             </div>
             {/* Main Components */}
-            <div className="d-flex justify-content-between align-items-center gap-md-3">
+            <div className="d-flex justify-content-between align-items-center gap-md-3" style={{ minHeight: 'calc(100vh - 130px)' }}>
                 {/* Menu */}
                 {(() => {
                     return !mobileState || (mobileState && selectedTab === 'menu') ?
@@ -87,7 +87,7 @@ function Home() {
                 {/* Dashboard */}
                 {(() => {
                     return !mobileState || (mobileState && selectedTab === 'dashboard' && !showMiningProgress) ?
-                        <div className="item-stretch mobile-item mobile-item-fixed" style={{ height: 'calc(100vh - 130px)' }}>
+                        <div className="item-stretch mobile-item mobile-item-fixed" style={{ minHeight: 'calc(100vh - 130px)' }}>
                             {(() => {
                                 if (pageState === 'home') {
                                     return <>
@@ -96,7 +96,7 @@ function Home() {
                                             <span className="mx-2 fs-6 fs-xl-13 fs-xxl-15 font-gotham">Hello,</span>
                                             <span className="fs-6 fs-xl-13 fs-xxl-14" style={{ color: '#D7263D' }}>ISA47</span>
                                         </div>
-                                        <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed item-stretch item-dash" style={{ height: 'calc(100vh - 240px)' }}>
+                                        <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed item-stretch item-dash" style={{ minHeight: 'calc(100vh - 240px)' }}>
                                             <div className="py-2 d-flex justify-content-between align-items-center">
                                                 <span className="fs-6 fs-lg-11 fs-xl-12 fw-bolder" style={{ lineHeight: 'normal' }}>REWARD BALANCE:</span>
                                                 <span className="py-2 px-2 border border-4 border-black rounded-4 bg-light-green-950 text-center fs-6 fs-lg-12 fs-xl-13">123,456 SNAKES</span>
@@ -128,7 +128,7 @@ function Home() {
                                     </>
                                 } else if (pageState === 'claim-rewards') {
                                     return <>
-                                        <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center" style={{ height: `${showRewardHistory ? 'calc(100vh - 480px)' : 'calc(100vh - 300px)'}` }}>
+                                        <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center" style={{ minHeight: `${showRewardHistory ? 'calc(100vh - 480px)' : 'calc(100vh - 300px)'}` }}>
                                             <div className="w-100 text-center">
                                                 <div className="fs-5 text-light-green-950 mb-2" style={{ lineHeight: 'normal' }}>Scan code and Claim Rewards</div>
                                                 <div className="my-4 my-xxl-4">
