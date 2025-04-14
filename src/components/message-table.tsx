@@ -7,7 +7,7 @@ interface MessageTableProps {
 function MessageTable({ height = '38vh', data, }: MessageTableProps) {
     return (
         <div className="w-100 border-0 bg-green-960">
-            <div className='table-container ' style={{ minHeight: `${height}`, overflowY: 'scroll' }}>
+            <div className='table-container ' style={{ height: `${height}`, overflowY: 'scroll' }}>
                 {data.length === 0 ? (
                     <div className="fs-3 text-center p-3 border border-1">No Data</div>
                 ) : (
