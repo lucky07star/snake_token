@@ -9,7 +9,7 @@ function HowItWorksPage() {
             <div className="row px-1 pt-5 pt-lg-5 px-lg-5 px-xl-5">
                 <div className="col-sm-6 col-xl-3 border border-0 text-center position-relative box-margin-bottom px-3">
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>1</span>
-                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
+                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
@@ -19,7 +19,7 @@ function HowItWorksPage() {
                 </div>
                 <div className="col-sm-6 col-xl-3 border border-0 text-center position-relative box-margin-bottom px-3">
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>2</span>
-                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
+                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>INSTANT REWARDS:</h2>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
@@ -29,7 +29,7 @@ function HowItWorksPage() {
                 </div>
                 <div className="col-sm-6 col-xl-3 border border-0 text-center position-relative box-margin-bottom px-3">
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>3</span>
-                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
+                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Deflationary & Scarce:</h2>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
@@ -39,7 +39,7 @@ function HowItWorksPage() {
                 </div>
                 <div className="col-sm-6 col-xl-3 border border-0 text-center position-relative box-margin-bottom px-3">
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>4</span>
-                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height-48vh">
+                    <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
                             <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>

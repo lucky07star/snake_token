@@ -811,21 +811,15 @@ body {
   width: 100% !important;
 }
 
-.box-height-48vh {
-  min-height: 'auto';
-}
-
-@media (min-width: 768px) {
-  .box-height-48vh {
-    height: 52vh;
-  }
+.box-height {
+  min-height: 100%;
 }
 
 .box-margin-bottom {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 1186px) {
+@media (max-width: 1199px) {
   .box-margin-bottom {
     margin-bottom: 5rem;
   }
