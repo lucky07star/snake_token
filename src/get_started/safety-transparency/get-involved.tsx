@@ -24,7 +24,7 @@ function GetInvolvedPage() {
                         <span className='text-white fs-6 fs-xl-12 fs-xxl-14 text-start w-100' style={{ lineHeight: 'normal' }}>read our litepaper</span>
                     </button>
                 </div>
-                <div className='col-md-6 align-self-center'>
+                <div className='col-md-6 align-self-end'>
                     <div className='d-flex justify-content-center align-items-center mb-4'>
                         <IconAlarm className='icon-alarm' style={{ width: '32vh', height: 'auto' }} />
                     </div>
