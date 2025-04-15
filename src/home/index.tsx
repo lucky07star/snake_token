@@ -1,5 +1,7 @@
 
 import { useEffect, useState } from "react";
+import { Transaction, Connection } from '@solana/web3.js';
+import { Buffer } from "buffer";
 
 // partials & components
 import TableData from "../data";
@@ -18,6 +20,11 @@ import { ReactComponent as IconColoredLogo } from '../svgs/logo-colored.svg';
 import { ReactComponent as IconArrowUp } from '../svgs/arrow-up.svg';
 import { ReactComponent as IconArrowDown } from '../svgs/arrow-down.svg';
 
+import getMe from "../features/users/apis/getMe";
+import getRewards from "../features/users/apis/getRewards";
+import postClaimTx from "../features/wallet/apis/postClaimTx"; 
+import { USER, REWARDS } from "../features/users/types";
+
 function Home() {
     // state
     const [pageState, setPageState] = useState<string>('home');
@@ -27,6 +34,62 @@ function Home() {
     const [showRewardHistory, setShowRewardHistory] = useState<boolean>(false);
     const [dashboardText, setDashboardText] = useState<string>('dashboard');
 
+    const [userInfo, setUserInfo] = useState<USER | null>(null);
+    const [availableRewards, setAvailableRewards] = useState<REWARDS[] | []>([]);
+    const [tx, setTx] = useState<string>('')
+
+    const getMeAPI = getMe();
+    const getRewardsAPI = getRewards();
+    const postClaimTxAPI = postClaimTx();
+
+    useEffect(() => {
+        getMeAPI().then(res => {
+            setUserInfo(res.data);
+        })
+    }, [])
+    
+    useEffect(() => {
+        const run = async () => {
+            const { solana } = window as any;
+            if (!solana?.isPhantom) {
+              alert("Phantom not found");
+              return;
+            }
+      
+            try {
+                await solana.connect();
+        
+                const serializedTx = tx;
+                const sTx = Transaction.from(Buffer.from(serializedTx, "base64"));
+
+              // 🧠 Optionally, inspect the transaction
+                console.log("Fee Payer:", sTx.feePayer?.toBase58());
+                console.log("Instructions:", sTx.instructions.length);
+                console.log("Blockhash:", sTx.recentBlockhash);
+
+                if (!sTx.feePayer || !sTx.recentBlockhash) {
+                    console.error("Missing required transaction metadata");
+                    return;
+                }
+      
+                sTx.signatures = [];
+                const signedTx = await solana.signTransaction(sTx);
+
+                const serializedSignedTx = signedTx.serialize({ requireAllSignatures: false }).toString("base64");
+        
+                const connection = new Connection("https://api.mainnet-beta.solana.com");
+                console.log("Here2");
+                const sig = await connection.sendRawTransaction(signedTx.serialize());
+        
+                console.log("✅ Transaction Signature:", sig);
+            } catch (err) {
+              console.error("Transaction error:", err);
+            }
+        };
+        if(tx !== '')
+            run();
+    }, [tx]);
+
     const tabClicked = (tab_name: string) => {
         if (mobileState) {
             setSelectedTab(tab_name);
@@ -34,6 +97,24 @@ function Home() {
     }
 
     const handleWallet = () => {
+    }
+
+    const handleClaim = () => {
+        postClaimTxAPI().then(data => {
+            setTx(data.data);
+        });
+    }
+
+    const handleRewards = () => {
+        setPageState("claim-rewards"); 
+        setDashboardText("claim your rewards");
+        getRewardsAPI({
+            offset: 0,
+            limit: 10,
+            available: true
+        }).then(data => {
+            setAvailableRewards(data.data)
+        })
     }
 
     useEffect(() => {
@@ -94,7 +175,7 @@ function Home() {
                                         <div className="d-flex align-items-center w-100 border border-dashed border-5 p-1">
                                             <IconColoredLogo className="mx-1" />
                                             <span className="mx-2 fs-6 fs-xl-13 fs-xxl-15 font-gotham">Hello,</span>
-                                            <span className="fs-6 fs-xl-13 fs-xxl-14" style={{ color: '#D7263D' }}>ISA47</span>
+                                            <span className="fs-6 fs-xl-13 fs-xxl-14" style={{ color: '#D7263D' }}>{userInfo?.twitter_username}</span>
                                         </div>
                                         <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed item-stretch item-dash" style={{ minHeight: 'calc(100vh - 240px)' }}>
                                             <div className="py-2 d-flex justify-content-between align-items-center">
@@ -104,7 +185,7 @@ function Home() {
                                             <div className="separator py-2"><div className="separator-3 separator-dashed separator-black"></div></div>
                                             <div className="w-100 py-2">
                                                 <div className="w-100 d-flex justify-content-center">
-                                                    <button className="border border-4 border-black bg-gray-300 w-75 py-3 fs-6 fs-xl-11 fs-xxl-13 w-100" style={{ lineHeight: 'normal' }} onClick={() => { setPageState("claim-rewards"); setDashboardText("claim your rewards") }}>Your Rewards</button>
+                                                    <button className="border border-4 border-black bg-gray-300 w-75 py-3 fs-6 fs-xl-11 fs-xxl-13 w-100" style={{ lineHeight: 'normal' }} onClick={handleRewards}>Your Rewards</button>
                                                 </div>
                                             </div>
                                             <div className="separator py-2"><div className="separator-3 separator-dashed separator-black"></div></div>
@@ -141,7 +222,7 @@ function Home() {
                                         {
                                             !mobileState ?
                                                 <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
-                                                    <button className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
+                                                    <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                 </div>
                                                 :
                                                 ''

@@ -1,7 +1,20 @@
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as IconSmallLogo } from "../svgs/logo-small.svg";
+import getMe from "../features/users/apis/getMe";
 
 function MainHeader() {
+    const navigate = useNavigate()
+    const [authStatus, setAuthStatus] = useState<boolean>(false);
+
+    const getMeAPI = getMe();
+
+    getMeAPI().then(() => {
+        setAuthStatus(true);
+    }).catch(() => {
+        setAuthStatus(false);
+    })
 
     return (
         <>
@@ -12,7 +25,13 @@ function MainHeader() {
                     <span className="fs-1 fs-lg-7 fs-xl-7 text-white main-header-title">SNAKE.AI</span>
                 </div>
                 <div className="d-flex justify-content-end align-items-center gap-3 h-100 px-2">
-                    <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login1`} className="border border-0 fs-5 fw-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
+                {
+                    authStatus ? (
+                        <button onClick={() => navigate('/home')} className="border border-0 fs-5 fw-bold py-2 px-3 text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</button>
+                    ) : (
+                        <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login1`} className="border border-0 fs-5 fw-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
+                    )
+                }
                 </div>
             </div>
         </>

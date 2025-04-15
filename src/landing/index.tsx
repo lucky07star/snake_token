@@ -35,7 +35,7 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
             <div className='w-100 p-2 p-md-4 p-lg-4' style={{ height: '90vh' }}>
                 {
                     (() => {
-                        return pageStatus === "game" ? <BlankPage component={<SnakePanel milisecond={25} callback={gameResult} />} /> : <MainLanding />
+                        return pageStatus === "game" ? <BlankPage component={<SnakePanel milisecond={50} callback={gameResult} />} /> : <MainLanding />
                     })()
                 }
             </div>
