@@ -11,9 +11,11 @@ function HowItWorksPage() {
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>1</span>
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
-                            <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
+                            <div className="d-flex justify-content-center align-items-center" style={{ height: '40px' }}>
+                                <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
+                            </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham-semi-bold" style={{ lineHeight: 'normal' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4-semi-bold" style={{ lineHeight: 'normal' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
                         </div>
                     </div>
                 </div>
@@ -21,9 +23,11 @@ function HowItWorksPage() {
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>2</span>
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
-                            <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>INSTANT REWARDS:</h2>
+                            <div className="d-flex justify-content-center align-items-center" style={{ height: '40px' }}>
+                                <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>INSTANT REWARDS:</h2>
+                            </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham-semi-bold" style={{ lineHeight: 'normal' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4-semi-bold" style={{ lineHeight: 'normal' }}>Instantly receive $SNAKE tokens—direct to your wallet. Mining made easy, engaging, and frictionless.</p>
                         </div>
                     </div>
                 </div>
@@ -31,9 +35,11 @@ function HowItWorksPage() {
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>3</span>
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
-                            <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Deflationary & Scarce:</h2>
+                            <div className="d-flex justify-content-center align-items-center" style={{ height: '40px' }}>
+                                <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Deflationary & Scarce:</h2>
+                            </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham" style={{ lineHeight: 'normal' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4" style={{ lineHeight: 'normal' }}>Every token mined means a token burned—creating scarcity and rewarding early adopters.</p>
                         </div>
                     </div>
                 </div>
@@ -41,9 +47,11 @@ function HowItWorksPage() {
                     <span className="fs-1 fs-lg-2 fs-xl-4 px-4 bg-green-950 fw-bolder position-absolute top-0 start-50 translate-middle" style={{ color: '#A9E000' }}>4</span>
                     <div className="border border-5 border-black pt-3 pt-lg-5 box-height">
                         <div className="pt-4">
-                            <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
+                            <div className="d-flex justify-content-center align-items-center" style={{ height: '40px' }}>
+                                <h2 className="fw-bolder fs-3 fs-lg-10" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
+                            </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-4 fs-xl-13 fs-xxl-14 pb-3 px-2 px-lg-4 font-gotham" style={{ lineHeight: 'normal' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4" style={{ lineHeight: 'normal' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
                         </div>
                     </div>
                 </div>
