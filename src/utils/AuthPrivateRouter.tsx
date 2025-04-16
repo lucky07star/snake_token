@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import getMe from '../features/users/apis/getMe';
+import getSession from '../features/users/apis/getSession';
 
 const AuthPrivateRouter: React.FC = () => {
     const [isAuthStatus, setIsAuthStatus] = useState<number>(-1)
 
-    const getMeAPI = getMe()
+    const getSessionAPI = getSession()
 
     useEffect(() => {
-        getMeAPI().then(() => {
-            setIsAuthStatus(1);
+        getSessionAPI().then(res => {
+            res.result ? setIsAuthStatus(1) : setIsAuthStatus(0);
         }).catch(() => {
             setIsAuthStatus(0);
         })

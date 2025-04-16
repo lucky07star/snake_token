@@ -2,16 +2,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as IconSmallLogo } from "../svgs/logo-small.svg";
-import getMe from "../features/users/apis/getMe";
+import getSession from "../features/users/apis/getSession";
 
 function MainHeader() {
     const navigate = useNavigate()
     const [authStatus, setAuthStatus] = useState<boolean>(false);
 
-    const getMeAPI = getMe();
+    const getSessionAPI = getSession();
 
-    getMeAPI().then(() => {
-        setAuthStatus(true);
+    getSessionAPI().then(res => {
+        res.result ? setAuthStatus(true) : setAuthStatus(false);
     }).catch(() => {
         setAuthStatus(false);
     })
@@ -29,7 +29,7 @@ function MainHeader() {
                     authStatus ? (
                         <button onClick={() => navigate('/home')} className="border border-0 fs-5 fw-bold py-2 px-3 text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</button>
                     ) : (
-                        <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login1`} className="border border-0 fs-5 fw-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
+                        <a href={`${process.env.REACT_APP_BACKEND_URL}/api/login`} className="border border-0 fs-5 fw-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
                     )
                 }
                 </div>
