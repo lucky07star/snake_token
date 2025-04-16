@@ -5,6 +5,7 @@ import LandingPage from "./landing";
 import GetStartedPage from "./get_started";
 import Home from "./home";
 import TweetMiningPage from "./tweet_mining";
+import NotFoundPage from "./partials/not-found";
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
         <Route path="/tweet-mining" element={<TweetMiningPage />} />
         <Route path="/tweet-mining/page1" element={<TweetMiningPage page_number={1} />} />
         <Route path="/tweet-mining/page2" element={<TweetMiningPage page_number={2} />} />
+
+        <Route path="*" element={<NotFoundPage />} />
 
       </Routes>
     </Router>

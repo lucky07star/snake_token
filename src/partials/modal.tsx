@@ -1,14 +1,14 @@
 
 interface ModalProps {
-    isOpen: boolean;
-    isHeader: boolean;
-    isFooter: boolean;
-    onClose: () => void;
+    isOpen?: boolean;
+    isHeader?: boolean;
+    isFooter?: boolean;
+    onClose?: () => void;
     title?: string;
-    children: React.ReactNode;
+    body: React.ReactNode;
 }
 
-function Modal({ isOpen, isHeader, isFooter, onClose, title = "", children }: ModalProps) {
+function Modal({ isOpen = false, isHeader = false, isFooter = false, onClose = () => { }, title = "", body }: ModalProps) {
     if (!isOpen) return null;
 
     return (
@@ -21,7 +21,7 @@ function Modal({ isOpen, isHeader, isFooter, onClose, title = "", children }: Mo
                             &times;
                         </button>
                     </div>
-                    <div className="modal-body">{children}</div>
+                    <div className="modal-body">{body}</div>
                     <div className={`modal-footer ${isFooter ? '' : 'd-none'}`}>
                         <button type="button" className="btn btn-secondary" onClick={onClose}>Close</button>
                     </div>
