@@ -41,7 +41,7 @@ function Home() {
     const [dashboardText, setDashboardText] = useState<string>('dashboard');
 
     const { notify } = useNotify();
-    const {walletAvailable, connect, publicKey } = usePhantom();
+    const {walletAvailable, connect, publicKey, disconnect } = usePhantom();
 
     console.log("Public key", publicKey)
 
@@ -132,7 +132,7 @@ function Home() {
                     if(userInfo?.wallet_address !== data as string) {
                         notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                         alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
-                        disconnectPhantom();
+                        disconnect();
                     }
                 }
             })
@@ -140,7 +140,7 @@ function Home() {
             if(publicKey !== userInfo?.wallet_address) {
                 notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                 alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
-                disconnectPhantom();
+                disconnect();
             }
         }  
     }
@@ -150,21 +150,6 @@ function Home() {
             setTx(data.data);
         });
     }
-
-    const disconnectPhantom = async (): Promise<void> => {
-        const { solana } = window as any;
-        if (solana && solana.isPhantom) {
-            try {
-                // Call the disconnect method
-                await solana.disconnect();
-                console.log('Disconnected from Phantom wallet');
-            } catch (error) {
-                console.error('Failed to disconnect:', error);
-            }
-        } else {
-            console.log('Phantom wallet is not installed');
-        }
-    };
 
     const handleRewards = () => {
         setPageState("claim-rewards"); 
@@ -283,7 +268,13 @@ function Home() {
                                         {
                                             !mobileState ?
                                                 <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
-                                                    <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
+                                                {
+                                                    publicKey as string === userInfo?.wallet_address ? (
+                                                        <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
+                                                    ) : (
+                                                        <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
+                                                    )
+                                                }    
                                                 </div>
                                                 :
                                                 ''

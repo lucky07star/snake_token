@@ -25,9 +25,26 @@ export const usePhantom = () => {
     }
   };
 
+  const disconnect = async () => {
+    const { solana } = window as any;
+    if (solana && solana.isPhantom) {
+        try {
+            // Call the disconnect method
+            await solana.disconnect();
+            setPublicKey(null);
+            console.log('Disconnected from Phantom wallet');
+        } catch (error) {
+            console.error('Failed to disconnect:', error);
+        }
+    } else {
+        console.log('Phantom wallet is not installed');
+    }
+  };
+
   return {
     walletAvailable,
     publicKey,
     connect,
+    disconnect
   };
 };
