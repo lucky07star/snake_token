@@ -150,7 +150,7 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                 {(() => {
                     return !mobileState || (showMiningProgress && selectedTab === 'dashboard') ?
                         <div className={`item-stretch ${pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'} border-top-dashed`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
-                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="60vh" title="Mined Tweets" data={TableData.custom_table} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
+                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="60vh" title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
                         </div> : ''
                 })()}
             </div>

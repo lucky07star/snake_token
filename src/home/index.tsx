@@ -10,6 +10,7 @@ import TableData from "../data";
 import QRCodeComponent from "../components/qrcode";
 import CustomTable from "../components/custom-table";
 import TableMiningProgress from "../partials/mining-progress-table";
+import WalletConnectModal from "../features/wallet/componenets/modals/wallet_connect";
 
 // icons
 import { ReactComponent as IconHome } from "../svgs/home.svg";
@@ -29,7 +30,7 @@ import postWalletAddress from "../features/wallet/apis/postWalletAddress";
 import { USER, REWARDS } from "../features/users/types";
 import { alertWarn } from "../utils/notify";
 
-import { formatString } from "../libs";
+import { formatDateDifference, formatString } from "../libs";
 
 function Home() {
     // state
@@ -39,14 +40,14 @@ function Home() {
     const [mobileState, setMobileState] = useState<boolean>(window.innerWidth < 768);
     const [showRewardHistory, setShowRewardHistory] = useState<boolean>(false);
     const [dashboardText, setDashboardText] = useState<string>('dashboard');
+    const [walletModal, setWalletModal] = useState<boolean>(false);
 
     const { notify } = useNotify();
     const {walletAvailable, connect, publicKey, disconnect } = usePhantom();
 
-    console.log("Public key", publicKey)
-
     const [userInfo, setUserInfo] = useState<USER | null>(null);
     const [availableRewards, setAvailableRewards] = useState<REWARDS[] | []>([]);
+    const [meReward, setMeReward] = useState<any>([]);
     const [tx, setTx] = useState<string>('')
 
     const getMeAPI = getMe();
@@ -57,7 +58,12 @@ function Home() {
     useEffect(() => {
         getMeAPI().then(res => {
             setUserInfo(res.data);
-        })
+        });
+        getRewardsAPI({
+            available: true
+        }).then(data => {
+            setMeReward(data.data);
+        });
     }, [])
     
     useEffect(() => {
@@ -107,6 +113,14 @@ function Home() {
         }
     }
 
+    const handleModal = () => {
+        setWalletModal(true)
+    }
+
+    const clsoeModal = () => {
+        setWalletModal(false)
+    }
+
     const handleWallet = () => {
         // disconnectPhantom()
         if(publicKey === null || publicKey === "") {
@@ -118,6 +132,7 @@ function Home() {
                     if(!walletAvailable) {
                         notify(alertWarn("Phantom Walllet is not available on this browser."));
                         alert("Phantom Walllet is not available on this browser.");
+                        clsoeModal();
                         return;
                     }
 
@@ -126,6 +141,7 @@ function Home() {
                     }).then(resp => {
                         console.log("res", resp.data)
                         setUserInfo(resp.data);
+                        clsoeModal();
                     })
                 }
                 else {
@@ -133,15 +149,19 @@ function Home() {
                         notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                         alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                         disconnect();
+                        clsoeModal();
                     }
                 }
-            })
+            });
+            clsoeModal();
         } else {
             if(publicKey !== userInfo?.wallet_address) {
                 notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                 alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                 disconnect();
+                clsoeModal();
             }
+            clsoeModal();
         }  
     }
 
@@ -177,6 +197,7 @@ function Home() {
 
     return (
         <div className="w-100 p-3" style={{ minHeight: '100vh' }}>
+            <WalletConnectModal show={walletModal} handleClose={clsoeModal} connectWallet={handleWallet} />
             {/* Tab Bars */}
             <div className="d-flex justify-content-between align-items-end gap-3 pt-md-3 mb-2 row-reverse">
                 <div className={`border-bottom-5 border-bottom-dashed py-3 mobile-tab ${mobileState ? (selectedTab === 'menu' ? '' : 'border-bottom-gray text-gray-61') : ''}`} style={{ width: '130px' }} onClick={() => tabClicked('menu')}>
@@ -235,7 +256,7 @@ function Home() {
                                                 </div>
                                             </div>
                                             <div className="separator py-2"><div className="separator-3 separator-dashed separator-black"></div></div>
-                                            <span className="fs-6 fs-lg-11 fs-xl-12 fw-bolder">REWARD BALANCE:</span>
+                                            <span className="fs-6 fs-lg-11 fs-xl-12 fw-bolder">ENGAGEMENT METRICS:</span>
                                             <div className="separator py-2"><div className="separator-3 separator-dashed separator-black"></div></div>
                                             <div className="w-100 d-flex justify-content-center align-items-between gap-1">
                                                 <div className="w-100 border border-light-green-950 border-3 py-4 px-2 text-center bg-green-950 rounded-2">
@@ -269,7 +290,7 @@ function Home() {
                                             !mobileState ?
                                                 <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
                                                 {
-                                                    publicKey as string === userInfo?.wallet_address ? (
+                                                    publicKey as string === userInfo?.wallet_address && meReward.length !== 0 ? (
                                                         <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                     ) : (
                                                         <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
@@ -294,7 +315,7 @@ function Home() {
                                         </div>
                                         {showRewardHistory ? <CustomTable height="120px" title="reward history" data={availableRewards.map(item => ({
                                             text: `${item?.reward_amount} Snake tokens`,
-                                            date: item?.created_at 
+                                            date: formatDateDifference(item?.block_time ?? "") 
                                         }))} action_icons={['like', 'reply', 'retweet', 'delete']} /> : ''}
                                     </div>
                                 </> : ''
@@ -321,12 +342,12 @@ function Home() {
                                 pageState === 'claim-rewards' ? <>
                                     <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="41vh" title="reward history" data={availableRewards.map(item => ({
                                             text: `${item?.reward_amount} Snake tokens`,
-                                            date: item?.created_at 
+                                            date: formatDateDifference(item?.block_time ?? "") 
                                         }))} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
                                     {
                                         !mobileState ?
                                             <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-start">
-                                                <button onClick={handleWallet} className="text-truncate fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5">
+                                                <button onClick={() => setWalletModal(true)} className="text-truncate fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5">
                                                 {
                                                     publicKey ? formatString(publicKey) : "Link Wallet"
                                                 }
@@ -335,7 +356,7 @@ function Home() {
                                             :
                                             ''
                                     }
-                                </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="60vh" title="Mined Tweets" data={TableData.custom_table} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
+                                </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="60vh" title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
                             }
                         </div> : ''
                 })()}

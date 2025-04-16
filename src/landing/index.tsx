@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Cookies from 'js-cookie';
 import LandingHeader from '../partials/landing-header';
@@ -7,11 +8,15 @@ import BlankPage from '../partials/blank';
 import SnakePanel from '../snake';
 import MainLanding from './main';
 
+import { getSession } from '../libs/cookie';
+import axiosClient from '../libs/axiosClient';
+
 interface LandingPageProps {
     page_status?: string
 }
 
 function LandingPage({ page_status = 'game' }: LandingPageProps) {
+    const navigate = useNavigate();
     // set state
     const [pageStatus, setPageStatus] = useState<string>(page_status);
 
@@ -26,6 +31,7 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
         const sid = params.get('SID');
         if (sid) {
             Cookies.set('SID', sid, { expires: 7 });
+            navigate('/home');
         }
     }, []);
 

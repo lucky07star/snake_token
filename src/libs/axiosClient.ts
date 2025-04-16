@@ -1,6 +1,6 @@
 // src/lib/axiosClient.ts
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
-import { getSession } from './cookie'
+import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import { getSession } from './cookie';
 
 // TypeScript interface for your token storage or other purposes
 interface TokenResponse {
@@ -16,7 +16,7 @@ const axiosClient = axios.create({
     baseURL: process.env.REACT_APP_BACKEND_URL || '',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getSession()}`,
+        // 'Authorization': `Bearer ${getSession()}`,
     },
     withCredentials: true
 })
@@ -27,7 +27,7 @@ let refreshing_token: Promise<AxiosResponse<TokenResponse>> | null = null
 // Request interceptor to add the authentication token
 axiosClient.interceptors.request.use((config) => {
     config.headers = config.headers || {}
-    // config.headers!['SID'] = getSession() || ''
+    config.headers!['Authorization'] = `Bearer ${getSession()}`
     return config
 })
 

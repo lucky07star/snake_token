@@ -14,5 +14,6 @@ export type REWARDS = {
     tx_id: string | null,
     created_at: string,
     available: boolean,
-    timestamp: string | null
+    timestamp: string | null,
+    block_time: string | null,
 };
