@@ -135,7 +135,7 @@ function Home() {
         // disconnectPhantom()
         if (publicKey === null || publicKey === "") {
             connect().then(data => {
-                if (userInfo?.wallet_address === "" || userInfo?.wallet_address === null) {
+                if (userInfo?.wallet_address === "" || userInfo?.wallet_address === null || userInfo?.wallet_address === undefined) {
                     notify(alertWarn("Wallet Address can be updated! \n Do you make sure to set this wallet address?"));
                     alert("Wallet Address can be updated! \n Do you make sure to set this wallet address?");
 
