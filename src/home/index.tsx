@@ -1,12 +1,11 @@
 
 import { useEffect, useState } from "react";
-import { Transaction, Connection, sendAndConfirmRawTransaction  } from '@solana/web3.js';
+import { Transaction, Connection, sendAndConfirmRawTransaction } from '@solana/web3.js';
 import { Buffer } from "buffer";
 import { useNotify } from "../hooks/useNotify";
 import { usePhantom } from "../hooks/usePhantom";
 
 // partials & components
-import TableData from "../data";
 import QRCodeComponent from "../components/qrcode";
 import CustomTable from "../components/custom-table";
 import TableMiningProgress from "../partials/mining-progress-table";
@@ -25,7 +24,7 @@ import { ReactComponent as IconArrowDown } from '../svgs/arrow-down.svg';
 
 import getMe from "../features/users/apis/getMe";
 import getRewards from "../features/users/apis/getRewards";
-import postClaimTx from "../features/wallet/apis/postClaimTx"; 
+import postClaimTx from "../features/wallet/apis/postClaimTx";
 import postWalletAddress from "../features/wallet/apis/postWalletAddress";
 import { USER, REWARDS } from "../features/users/types";
 import { alertWarn } from "../utils/notify";
@@ -43,7 +42,7 @@ function Home() {
     const [walletModal, setWalletModal] = useState<boolean>(false);
 
     const { notify } = useNotify();
-    const {walletAvailable, connect, publicKey, disconnect } = usePhantom();
+    const { walletAvailable, connect, publicKey, disconnect } = usePhantom();
 
     const [userInfo, setUserInfo] = useState<USER | null>(null);
     const [availableRewards, setAvailableRewards] = useState<REWARDS[] | []>([]);
@@ -65,15 +64,15 @@ function Home() {
             setMeReward(data.data);
         });
     }, [])
-    
+
     useEffect(() => {
         const run = async () => {
             const { solana } = window as any;
             if (!solana?.isPhantom) {
-              alert("Phantom not found");
-              return;
+                alert("Phantom not found");
+                return;
             }
-      
+
             try {
                 await solana.connect();
 
@@ -86,13 +85,13 @@ function Home() {
                     console.error("Missing required transaction metadata");
                     return;
                 }
-      
+
                 // sTx.signatures = [];
                 const signedTx = await solana.signTransaction(sTx);
                 console.log(signedTx.signatures);
 
                 const rawTx = signedTx.serialize(); // returns a Buffer (or Uint8Array)
-        
+
                 console.log("Here2", rawTx);
 
                 const tSig = await sendAndConfirmRawTransaction(connection, rawTx, {
@@ -100,10 +99,10 @@ function Home() {
                 });
                 console.log("✅ Transaction Signature:", tSig);
             } catch (err) {
-              console.error("Transaction error:", err);
+                console.error("Transaction error:", err);
             }
         };
-        if(tx !== '')
+        if (tx !== '')
             run();
     }, [tx]);
 
@@ -123,13 +122,13 @@ function Home() {
 
     const handleWallet = () => {
         // disconnectPhantom()
-        if(publicKey === null || publicKey === "") {
+        if (publicKey === null || publicKey === "") {
             connect().then(data => {
-                if(userInfo?.wallet_address === "" || userInfo?.wallet_address === null) {
+                if (userInfo?.wallet_address === "" || userInfo?.wallet_address === null) {
                     notify(alertWarn("Wallet Address can be updated! \n Do you make sure to set this wallet address?"));
                     alert("Wallet Address can be updated! \n Do you make sure to set this wallet address?");
 
-                    if(!walletAvailable) {
+                    if (!walletAvailable) {
                         notify(alertWarn("Phantom Walllet is not available on this browser."));
                         alert("Phantom Walllet is not available on this browser.");
                         clsoeModal();
@@ -145,7 +144,7 @@ function Home() {
                     })
                 }
                 else {
-                    if(userInfo?.wallet_address !== data as string) {
+                    if (userInfo?.wallet_address !== data as string) {
                         notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                         alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                         disconnect();
@@ -155,14 +154,14 @@ function Home() {
             });
             clsoeModal();
         } else {
-            if(publicKey !== userInfo?.wallet_address) {
+            if (publicKey !== userInfo?.wallet_address) {
                 notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
                 alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                 disconnect();
                 clsoeModal();
             }
             clsoeModal();
-        }  
+        }
     }
 
     const handleClaim = () => {
@@ -172,7 +171,7 @@ function Home() {
     }
 
     const handleRewards = () => {
-        setPageState("claim-rewards"); 
+        setPageState("claim-rewards");
         setDashboardText("claim your rewards");
         getRewardsAPI({
             offset: 0,
@@ -289,13 +288,13 @@ function Home() {
                                         {
                                             !mobileState ?
                                                 <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
-                                                {
-                                                    publicKey as string === userInfo?.wallet_address && meReward.length !== 0 ? (
-                                                        <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
-                                                    ) : (
-                                                        <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
-                                                    )
-                                                }    
+                                                    {
+                                                        publicKey as string === userInfo?.wallet_address && meReward.length !== 0 ? (
+                                                            <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
+                                                        ) : (
+                                                            <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
+                                                        )
+                                                    }
                                                 </div>
                                                 :
                                                 ''
@@ -315,7 +314,7 @@ function Home() {
                                         </div>
                                         {showRewardHistory ? <CustomTable height="120px" title="reward history" data={availableRewards.map(item => ({
                                             text: `${item?.reward_amount} Snake tokens`,
-                                            date: formatDateDifference(item?.block_time ?? "") 
+                                            date: formatDateDifference(item?.block_time ?? "")
                                         }))} action_icons={['like', 'reply', 'retweet', 'delete']} /> : ''}
                                     </div>
                                 </> : ''
@@ -341,16 +340,16 @@ function Home() {
                             {
                                 pageState === 'claim-rewards' ? <>
                                     <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="41vh" title="reward history" data={availableRewards.map(item => ({
-                                            text: `${item?.reward_amount} Snake tokens`,
-                                            date: formatDateDifference(item?.block_time ?? "") 
-                                        }))} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
+                                        text: `${item?.reward_amount} Snake tokens`,
+                                        date: formatDateDifference(item?.block_time ?? "")
+                                    }))} action_icons={['like', 'reply', 'retweet', 'delete']} />} />
                                     {
                                         !mobileState ?
                                             <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-start">
                                                 <button onClick={() => setWalletModal(true)} className="text-truncate fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5">
-                                                {
-                                                    publicKey ? formatString(publicKey) : "Link Wallet"
-                                                }
+                                                    {
+                                                        publicKey ? formatString(publicKey) : "Link Wallet"
+                                                    }
                                                 </button>
                                             </div>
                                             :

@@ -1,38 +1,18 @@
 /* global */
-* {
+
+/* Silkscreen font */
+@font-face {
   font-family: 'Silkscreen';
+  src: url('../public/fonts/silkscreen/Silkscreen-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
 }
 
-html,
-body {
-  width: 100%;
-  height: auto;
-  /* background-color: #87B497 !important; */
-  background: radial-gradient(circle, #87B49750, #87B497);
-  font-family: 'Silkscreen';
-  overflow-x: hidden;
-}
-
-/* scroll bar */
-/* For WebKit browsers */
-::-webkit-scrollbar {
-  width: 10px;
-  /* Width of the scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  /* Background of the scrollbar track */
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  /* Color of the scrollbar thumb */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  /* Color when hovered */
+@font-face {
+  font-family: 'Silkscreen-Bold';
+  src: url('../public/fonts/silkscreen/Silkscreen-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
 }
 
 /* gotham font */
@@ -67,6 +47,52 @@ body {
 
 .font-gotham-semi-bold {
   font-family: 'Gotham-Semi-Bold';
+}
+
+.font-silkscreen {
+  font-family: 'Silkscreen' !important;
+  font-weight: 400;
+}
+
+.font-silkscreen-bold {
+  font-family: 'Silkscreen-Bold';
+  font-weight: 700 !important;
+}
+
+* {
+  font-family: 'Silkscreen';
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+  /* background-color: #87B497 !important; */
+  background: radial-gradient(circle, #87B49750, #87B497);
+  font-family: 'Silkscreen';
+  overflow-x: hidden;
+}
+
+/* scroll bar */
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Color when hovered */
 }
 
 .cursor-pointer {
@@ -744,6 +770,10 @@ body {
   border-bottom-color: black !important;
 }
 
+.separator-white {
+  border-bottom-color: white !important;
+}
+
 .separator-gray {
   border-bottom-color: gray !important;
 }
@@ -858,7 +888,7 @@ body {
 }
 
 .phase-container {
-  width: 340px;
+  width: 390px;
   align-self: center;
 }
 
@@ -1034,6 +1064,11 @@ body {
   .lock-size {
     height: 50vh;
   }
+}
+
+/** why join snake.ai **/
+.why-join-container {
+  width: 90% !important;
 }
 
 /** get-involved **/

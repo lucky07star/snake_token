@@ -6,12 +6,12 @@ import LandingHeader from '../partials/landing-header';
 
 import DashboardPage from './dashboard';
 import WhatIsSnakePage from './what-is-snake';
-import HowItWorksPage from './how-it-works'; // needs to fix
+import HowItWorksPage from './how-it-works';
 import TokennomicsPage from './tokenomics';
 import RoadmapPage from './roadmap';
-import SafetyTransparencyPage from './safety-transparency';
-import WhyJoinPage from './safety-transparency/why-join';
-import GetInvolvedPage from './safety-transparency/get-involved';
+import SafetyTransparencyPage from './safty-transparency';
+import WhyJoinPage from './why-join';
+import GetInvolvedPage from './get-involved';
 
 interface GetStartedPageProps {
     bar_status?: number

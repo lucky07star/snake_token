@@ -13,7 +13,6 @@ import { ReactComponent as IconMiningSelected } from "../svgs/mining-active.svg"
 import { ReactComponent as IconClaim } from "../svgs/claim.svg";
 import { ReactComponent as IconClaimSelected } from "../svgs/claim-active.svg";
 import { ReactComponent as IconArrowUp } from '../svgs/arrow-up.svg';
-import { ReactComponent as IconArrowDown } from '../svgs/arrow-down.svg';
 import { ReactComponent as IconSmallSearch } from '../svgs/search-small.svg';
 import { ReactComponent as IconHourGlass } from '../svgs/hourglass.svg';
 import { ReactComponent as IconPause } from '../svgs/pause.svg';
