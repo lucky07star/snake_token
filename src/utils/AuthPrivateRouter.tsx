@@ -15,7 +15,7 @@ const AuthPrivateRouter: React.FC = () => {
         })
     }, [])
     
-    return isAuthStatus === -1 ? <></> : isAuthStatus === 1 ? <Outlet /> : <Navigate to="/" />;
+    return isAuthStatus === -1 ? <></> : isAuthStatus === 1 ? <Outlet /> : <Navigate to="/get-started" />;
 };
 
 export default AuthPrivateRouter;

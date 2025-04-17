@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as IconSmallLogo } from "../svgs/logo-small.svg";
 import getSession from "../features/users/apis/getSession";
@@ -10,11 +10,13 @@ function MainHeader() {
 
     const getSessionAPI = getSession();
 
-    getSessionAPI().then(res => {
-        res.result ? setAuthStatus(true) : setAuthStatus(false);
-    }).catch(() => {
-        setAuthStatus(false);
-    })
+    useEffect(() => {
+        getSessionAPI().then(res => {
+            res.result ? setAuthStatus(true) : setAuthStatus(false);
+        }).catch(() => {
+            setAuthStatus(false);
+        })
+    }, [])
 
     return (
         <>
@@ -27,7 +29,7 @@ function MainHeader() {
                 <div className="d-flex justify-content-end align-items-center gap-3 h-100 px-2">
                     {
                         authStatus ? (
-                            <button onClick={() => navigate('/home')} className="border border-0 fs-5 font-silkscreen-bold py-2 px-3 text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</button>
+                            <button onClick={() => navigate('/home/0')} className="border border-0 fs-5 font-silkscreen-bold py-2 px-3 text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</button>
                         ) : (
                             <a href={`${process.env.REACT_APP_BACKEND_URL}/api/v1/login`} className="border border-0 fs-5 font-silkscreen-bold py-2 px-3 text-decoration-none text-center" style={{ backgroundColor: "#A9E000", color: "black" }}>GET STARTED</a>
                         )

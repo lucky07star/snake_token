@@ -1,6 +1,5 @@
 import UseGetAPI from '../../../apis/useGetAPI';
-import { SessionAPIUrl } from '../consts/index';
-import { getSession as getCookie } from '../../../libs/cookie';
+import { ProfileAPIUrl } from '../consts/index';
 
 // API
 interface SuccessResult {
@@ -13,20 +12,15 @@ interface BadResult {
     data: null;
 };
 
-export default function getSession(): () => Promise<SuccessResult | BadResult> {
+export default function getProfile(): () => Promise<SuccessResult | BadResult> {
     const fetchGetAPI = UseGetAPI<any | null>();
 
     // 
     return async () => {
         try {
-            if(getCookie() === null)
-                return {
-                    result: false,
-                    data: null
-                }; 
             // setLoader(true, "Fetching data...")
             const res = await fetchGetAPI({
-                url: SessionAPIUrl
+                url: ProfileAPIUrl
             });
             // 
             if (res.error) {

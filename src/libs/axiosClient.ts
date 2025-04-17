@@ -32,36 +32,36 @@ axiosClient.interceptors.request.use((config) => {
 })
 
 // Response interceptor to handle token refresh
-axiosClient.interceptors.response.use(
-    (response: AxiosResponse) => response,
-    async (error: AxiosError) => {
-        // Provide a fallback config if error.config is undefined
-        const config = error.config as CustomAxiosRequestConfig
+// axiosClient.interceptors.response.use(
+//     (response: AxiosResponse) => response,
+//     async (error: AxiosError) => {
+//         // Provide a fallback config if error.config is undefined
+//         const config = error.config as CustomAxiosRequestConfig
 
-        if (error.response?.status === 401 && !config._retry) {
-            config._retry = true
+//         if (error.response?.status === 401 && !config._retry) {
+//             config._retry = true
 
-            if (!refreshing_token) {
-                refreshing_token = refresh_token()
-            }
+//             if (!refreshing_token) {
+//                 refreshing_token = refresh_token()
+//             }
 
-            try {
-                const res = await refreshing_token
-                refreshing_token = null
-                access_token = res.data.access_token
-                return axiosClient(config)
-            } catch (err) {
-                refreshing_token = null
-                return Promise.reject(err)
-            }
-        }
-        return Promise.reject(error)
-    }
-)
+//             try {
+//                 const res = await refreshing_token
+//                 refreshing_token = null
+//                 access_token = res.data.access_token
+//                 return axiosClient(config)
+//             } catch (err) {
+//                 refreshing_token = null
+//                 return Promise.reject(err)
+//             }
+//         }
+//         return Promise.reject(error)
+//     }
+// )
 
 
-async function refresh_token(): Promise<AxiosResponse<TokenResponse>> {
-    return axios.get<TokenResponse>(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000'}/refresh`)
-}
+// async function refresh_token(): Promise<AxiosResponse<TokenResponse>> {
+//     return axios.get<TokenResponse>(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000'}/refresh`)
+// }
 
 export default axiosClient

@@ -5,6 +5,10 @@ export type USER = {
     wallet_address: string | null,
     created_at: string,
     latest_claim_timestamp: string | null,
+    reward_balance: number,
+    likes: number,
+    tweets: number,
+    replies: number,
 };
 
 export type REWARDS = {

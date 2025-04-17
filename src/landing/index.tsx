@@ -8,9 +8,6 @@ import BlankPage from '../partials/blank';
 import SnakePanel from '../snake';
 import MainLanding from './main';
 
-import { getSession } from '../libs/cookie';
-import axiosClient from '../libs/axiosClient';
-
 interface LandingPageProps {
     page_status?: string
 }

@@ -1,6 +1,5 @@
 import UseGetAPI from '../../../apis/useGetAPI';
-import { SessionAPIUrl } from '../consts/index';
-import { getSession as getCookie } from '../../../libs/cookie';
+import { RewardsCheckAPIUrl } from '../consts/index';
 
 // API
 interface SuccessResult {
@@ -13,20 +12,16 @@ interface BadResult {
     data: null;
 };
 
-export default function getSession(): () => Promise<SuccessResult | BadResult> {
+export default function getRewardsCheck(): (params: any) => Promise<SuccessResult | BadResult> {
     const fetchGetAPI = UseGetAPI<any | null>();
 
     // 
-    return async () => {
+    return async (params: any) => {
         try {
-            if(getCookie() === null)
-                return {
-                    result: false,
-                    data: null
-                }; 
             // setLoader(true, "Fetching data...")
             const res = await fetchGetAPI({
-                url: SessionAPIUrl
+                url: RewardsCheckAPIUrl,
+                params: params
             });
             // 
             if (res.error) {
@@ -35,10 +30,12 @@ export default function getSession(): () => Promise<SuccessResult | BadResult> {
                     data: null
                 };
             }
+            // 
+            // dispatch(setExchangeData(res.data))
             return {
                 result: true,
                 data: res.data
-            };
+            }
         } catch (e) {
             console.error(e);
             return {

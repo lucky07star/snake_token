@@ -4,6 +4,7 @@ import AuthPrivateRouter from "./utils/AuthPrivateRouter";
 import LandingPage from "./landing";
 import GetStartedPage from "./get_started";
 import Home from "./home";
+import Claim from "./claim";
 import TweetMiningPage from "./tweet_mining";
 import NotFoundPage from "./partials/not-found";
 
@@ -15,7 +16,11 @@ function App() {
         <Route path="/" element={<LandingPage />} />
 
         <Route element={<AuthPrivateRouter />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home/:value" element={<Home />} />
+        </Route>
+
+        <Route element={<AuthPrivateRouter />}>
+          <Route path="/claim/:value" element={<Claim />} />
         </Route>
 
         <Route path="/get-started" element={<GetStartedPage />} />
