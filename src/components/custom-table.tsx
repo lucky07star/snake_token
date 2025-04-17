@@ -16,15 +16,15 @@ function CustomTable({ height = '38vh', title, data, action_icons }: TableProps)
             <div className="fs-1 mb-2" style={{ lineHeight: 'normal' }}>{title}</div>
             <div className='table-container' style={{ maxHeight: `${height}`, overflowY: 'scroll' }}>
                 {data.length === 0 ? (
-                    <div className="fs-3 text-center p-3 border border-1">No Data</div>
+                    <div className="fs-3 text-center p-3 border border-1 text-green-960">No Data</div>
                 ) : (
                     data.map((item, index) => {
                         const { text, date } = item;
                         return (
                             <div className="d-flex justify-content-between align-items-center gap-2 mb-2" key={index}>
                                 <div className="item-data">
-                                    <div className="px-2 fs-7 fs-lg-13 fs-xl-14 fs-xxl-16 fw-bolder" style={{ lineHeight: 'normal' }}>{text}</div>
-                                    <div className="px-3 fs-8 fs-lg-14 fs-xl-15 fs-xxl-17" style={{ lineHeight: 'normal' }}>{date}</div>
+                                    <div className="px-2 fs-7 fs-lg-13 fs-xl-14 fs-xxl-16 fw-bolder text-green-960" style={{ lineHeight: 'normal' }}>{text}</div>
+                                    <div className="px-3 fs-8 fs-lg-14 fs-xl-15 fs-xxl-17 text-green-960" style={{ lineHeight: 'normal' }}>{date}</div>
                                 </div>
                                 <div className="item-actions d-flex justify-content-between gap-1 mb-1 px-2">
                                     {action_icons.includes("like") && (

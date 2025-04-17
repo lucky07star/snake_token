@@ -56,13 +56,13 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
             {/* Tab Bars */}
             <div className="d-flex justify-content-between align-items-end gap-3 pt-md-3 mb-2 row-reverse">
                 <div className={`border-bottom-5 border-bottom-dashed py-3 mobile-tab ${mobileState ? (selectedTab === 'menu' ? '' : 'border-bottom-gray text-gray-61') : ''}`} style={{ width: '130px' }} onClick={() => tabClicked('menu')}>
-                    <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>MENU</div>
+                    <div className="fs-2 text-center text-green-960" style={{ lineHeight: 'normal' }}>MENU</div>
                 </div>
                 <div className={`border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-tab-fixed ${mobileState ? (selectedTab === 'dashboard' ? '' : 'border-bottom-gray text-gray-61') : ''}`} onClick={() => tabClicked('dashboard')}>
-                    <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>Mine Tweets</div>
+                    <div className="fs-2 text-center text-green-960" style={{ lineHeight: 'normal' }}>Mine Tweets</div>
                 </div>
                 <div className="border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-hidden" style={{ width: '50%' }}>
-                    <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>Mining Progress</div>
+                    <div className="fs-2 text-center text-green-960" style={{ lineHeight: 'normal' }}>Mining Progress</div>
                 </div>
             </div>
             {/* Main Components */}
@@ -74,15 +74,15 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                             <div className={`d-flex justify-content-center align-items-center flex-wrap ${!mobileState ? 'h-md-75' : ''}`}>
                                 <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('home'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'home' || pageState === 'claim-rewards' ? <IconHomeSelected className="main-menu-icon" /> : <IconHome className="main-menu-icon" />}
-                                    {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Home</div> : ''}
+                                    {mobileState ? <div className="m-0 fs-1 text-center text-green-960" style={{ lineHeight: 'normal' }}>Home</div> : ''}
                                 </div>
                                 <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('mining'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'mining' ? <IconMiningSelected className="main-menu-icon" /> : <IconMining className="main-menu-icon" />}
-                                    {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Mining</div> : ''}
+                                    {mobileState ? <div className="m-0 fs-1 text-center text-green-960" style={{ lineHeight: 'normal' }}>Mining</div> : ''}
                                 </div>
                                 <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('claim'); setSelectedTab('dashboard'); setShowMiningProgress(false); setStartMining(false); }}>
                                     {pageState === 'claim' ? <IconClaimSelected className="main-menu-icon" /> : <IconClaim className="main-menu-icon" />}
-                                    {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Claim</div> : ''}
+                                    {mobileState ? <div className="m-0 fs-1 text-center text-green-960" style={{ lineHeight: 'normal' }}>Claim</div> : ''}
                                 </div>
                             </div>
                         </div> : ''
@@ -97,7 +97,7 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                                         <div className="w-100 py-md-3 py-lg-5 border-5">
                                             {
                                                 mobileState ? <div className="d-flex justify-content-center align-items-center text-center">
-                                                    <div className="my-3 text-fenter fs-5" style={{ lineHeight: 'normal' }}>Search using keywords or hashtags:</div>
+                                                    <div className="my-3 text-fenter fs-5 text-green-960" style={{ lineHeight: 'normal' }}>Search using keywords or hashtags:</div>
                                                 </div> : ''
                                             }
                                             <div className='d-flex justify-content-center mb-2 text-center mb-3 px-xl-5'>
@@ -107,7 +107,7 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                                                 </button>
                                             </div>
                                             <div className="d-flex justify-content-center align-items-center mb-3 px-xl-5">
-                                                <button className={`border border-black border-3 d-flex justify-content-center align-items-center ${(startMining && page_number === 1) || page_number === 2 ? 'bg-light-green-950' : 'bg-gray-300'} fs-6 fs-xxl-13 px-3 py-2`} style={{ lineHeight: 'normal', width: 'calc(100% - 20px)' }} onClick={() => setStartMining(true)}>
+                                                <button className={`border border-black border-3 d-flex justify-content-center align-items-center ${(startMining && page_number === 1) || page_number === 2 ? 'bg-light-green-950' : 'bg-gray-300'} fs-6 fs-xxl-13 px-3 py-2 text-green-960`} style={{ lineHeight: 'normal', width: 'calc(100% - 20px)' }} onClick={() => setStartMining(true)}>
                                                     Start Mining {(startMining && page_number === 1) || page_number === 2 ? <IconHourGlass /> : null}
                                                 </button>
                                             </div>
@@ -136,7 +136,7 @@ function TweetMiningPage({ page_number = 1 }: TweetMiningPageProps) {
                                 return mobileState ? <>
                                     <div className="w-100 border-5 border-dashed d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                                         <div className="m-0 text-center">
-                                            <span style={{ lineHeight: 'normal' }}>Mining Progress </span>
+                                            <span className="text-green-960" style={{ lineHeight: 'normal' }}>Mining Progress </span>
                                             <span className="text-light-green-950" style={{ lineHeight: 'normal' }}>50%</span>
                                         </div>
                                         <IconArrowUp style={{ width: '27px' }} onClick={() => setShowMiningProgress(true)} />

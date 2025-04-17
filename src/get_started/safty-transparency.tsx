@@ -4,7 +4,7 @@ import { ReactComponent as IconLock } from "../svgs/lock.svg";
 function SafetyTransparencyPage() {
     return (
         <div className="w-100 border border-5 border-black w-100 p-2" style={{ minHeight: "84vh" }}>
-            <div className="text-uppercase text-black fs-2 fs-lg-6 fs-xl-5 font-silkscreen-bold p-3" style={{ lineHeight: 'normal' }}>Safety & Transparency</div>
+            <div className="fs-2 fs-lg-6 fs-xl-5 font-silkscreen-bold p-3 text-green-960" style={{ lineHeight: 'normal' }}>Safety & Transparency</div>
             <div className="row d-flex justify-content-center align-items-center px-3 pt-3 column-reverse">
                 <div className="col-md-7 px-2">
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
@@ -13,7 +13,7 @@ function SafetyTransparencyPage() {
                             <input type="checkbox" className="custom-checkbox" id="fully_automated" />
                             <label htmlFor="fully_automated" className="custom-label"></label>
                         </div>
-                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold" style={{ lineHeight: 'normal' }}>Fully audited smart contracts (by CertiK/OtterSec)</span>
+                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>Fully audited smart contracts (by CertiK/OtterSec)</span>
                     </div>
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
                     <div className="d-flex justify-content-start align-items-center gap-3">
@@ -21,7 +21,7 @@ function SafetyTransparencyPage() {
                             <input type="checkbox" className="custom-checkbox" id="alocked_liquidity_pools" />
                             <label htmlFor="alocked_liquidity_pools" className="custom-label"></label>
                         </div>
-                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold" style={{ lineHeight: 'normal' }}>aLocked Liquidity pools (12-month lock minimum)</span>
+                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>aLocked Liquidity pools (12-month lock minimum)</span>
                     </div>
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
                     <div className="d-flex justify-content-start align-items-center gap-3">
@@ -29,7 +29,7 @@ function SafetyTransparencyPage() {
                             <input type="checkbox" className="custom-checkbox" id="burn_vesting_schedule" />
                             <label htmlFor="burn_vesting_schedule" className="custom-label"></label>
                         </div>
-                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold" style={{ lineHeight: 'normal' }}>Transparent token burn and vesting schedule</span>
+                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>Transparent token burn and vesting schedule</span>
                     </div>
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
                 </div>
