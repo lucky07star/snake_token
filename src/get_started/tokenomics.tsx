@@ -51,7 +51,7 @@ function TokennomicsPage() {
             </div>
             <div className="row justify-content-center">
                 <div className="col-md-9 d-flex justify-content-center">
-                    <button className="border border-0 fs-4 fw-bold py-2 px-4 px-lg-5 text-green-300 bg-black">{size.width < 768 ? 'learn more →' : 'learn more about tokenomics→'}</button>
+                    <button className={`border border-0 fs-4 fw-bold py-2 px-4 px-lg-5 text-green-300 ${size.width < 768 ? 'bg-green-700' : 'bg-black'} font-silkscreen-bold`}>{size.width < 768 ? 'learn more →' : 'learn more about tokenomics→'}</button>
                 </div>
             </div>
         </div>
