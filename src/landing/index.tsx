@@ -28,7 +28,7 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
         const sid = params.get('SID');
         if (sid) {
             Cookies.set('SID', sid, { expires: 7 });
-            navigate('/home');
+            navigate('/home/dashboard');
         }
     }, []);
 

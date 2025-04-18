@@ -1,8 +1,7 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Home from '../home';
 import getRewardsCheck from '../features/wallet/apis/getRewardsCheck';
 
 function ClaimPage() {
