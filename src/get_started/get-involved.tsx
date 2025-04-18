@@ -34,7 +34,7 @@ function GetInvolvedPage() {
                 </div>
             </div>
             <hr className="border border-black border-3 opacity-100 my-4"></hr>
-            <div className="fs-5 fs-lg-10 fs-xl-10 fw-bolder text-center text-green-960" style={{ lineHeight: 'normal' }}>#MineTheSnake and Join the Revolution</div>
+            <div className="fs-5 fs-lg-10 fs-xl-10 text-center text-green-960" style={{ lineHeight: 'normal' }}>#MineTheSnake and Join the Revolution</div>
         </div>
     );
 }
