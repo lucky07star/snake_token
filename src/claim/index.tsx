@@ -17,7 +17,7 @@ function ClaimPage() {
                 "reward_id": value
             }).then(data => {
                 if(data.result){
-                    navigate(`/home/dashboard`)
+                    navigate(`/home/claim`)
                 }
             })
         }
