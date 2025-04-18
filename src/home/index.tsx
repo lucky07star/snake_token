@@ -306,7 +306,7 @@ function Home() {
                                                                 publicKey as string === userInfo?.wallet_address && meReward.length !== 0 ? (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                                 ) : (
-                                                                    <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
+                                                                    <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5" disabled>Claim Now!</button>
                                                                 )
                                                             }
                                                         </div>

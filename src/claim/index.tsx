@@ -16,7 +16,10 @@ function ClaimPage() {
                 "reward_id": value
             }).then(data => {
                 if(data.result){
-                    navigate(`/home/claim`)
+                    if(data.data)
+                        navigate(`/home/claim`);
+                    else if (data.data == null)
+                        navigate('/Not-Founded');
                 }
             })
         }
