@@ -70,7 +70,7 @@ function Home() {
     }, [])
 
     useEffect(() => {
-        if(Number(value) === 1) 
+        if(String(value) === "claim") 
             handleRewards();
     }, [value])
 
