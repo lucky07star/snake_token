@@ -13,6 +13,8 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
     let _cellCountXRef = useRef(50);
     const _cellCountY: number = 50;
 
+    let _coinPosition = {x: 0, y: 0}; //position of target
+ 
     // reference of canvas and its parent
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasParentRef = useRef<HTMLDivElement>(null);
@@ -22,12 +24,13 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
     const [_snake, setSnake] = useState<Snake.Snake | undefined>(snake);
     const [eatenCoin, setEatenCoin] = useState<boolean>(false);
 
+    // initialize
     useEffect(() => {
         // create a snake
-        let snake = Snake.createSnake(52, 2, 30);
+        let snake = Snake.createSnake(102, 10, 10);
         let vectors = [];
-        for (var i = 0; i < 52; i++) {
-            if (i > 30) {
+        for (var i = 0; i < 102; i++) {
+            if (i > 92) {
                 vectors.push(2)
             } else if (i > 12) {
                 vectors.push(3)
@@ -48,13 +51,23 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
         // timer for moving snake
         const interval = setInterval(() => {
             // define next position of snake
-            const nextVector: number = 1;
-            setSnake(Snake.move(snake, nextVector));
+            if (snake.y >= _cellCountY - 9 && Snake.headerVector(snake) === 0) { // bottom to right
+                setSnake(Snake.move(snake, 1));
+            } else if (snake.x >= _cellCountXRef.current - 9 && Snake.headerVector(snake) === 1) {
+                setSnake(Snake.move(snake, 2));
+            } else if (snake.y <= 9 && Snake.headerVector(snake) === 2) {
+                setSnake(Snake.move(snake, 3));
+            } else if (snake.x <= _cellCountXRef.current / 2 && Snake.headerVector(snake) === 3) {
+                setSnake(Snake.move(snake, 0));
+            } else {
+                setSnake(Snake.move(snake));
+            }
 
-            // compare if snake take the coin (as default, coin position is (60, 30).)
-            if (snake.x === (_cellCountXRef.current - 5) && snake.y === 30) {
+            // compare if snake take the coin (as default, coin position is center of canvas.)
+            if (snake.x === _coinPosition.x && snake.y === _coinPosition.y) { // if snake eats the coin.
                 setEatenCoin(true);
-            } else if ((snake.x <= 0 || snake.x >= _cellCountXRef.current) || (snake.y <= 0 || snake.y >= _cellCountY)) {
+                callback('out');
+            } else if ((snake.x <= 0 || snake.x >= _cellCountXRef.current) || (snake.y <= 0 || snake.y >= _cellCountY)) { // if snake is out of game board.
                 callback('out');
             }
 
@@ -66,6 +79,7 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
         };
     }, []);
 
+    // get events
     useEffect(() => {
         const canvas = canvasRef.current;
         const canvasParent = canvasParentRef.current;
@@ -79,6 +93,8 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
             _cellSizeRef.current = Math.floor(height / _cellCountY);
             const cellSize = _cellSizeRef.current;
             _cellCountXRef.current = Math.floor(width / cellSize) + 1;
+            // define target position
+            _coinPosition = {x: Math.floor(_cellCountXRef.current / 2), y: Math.floor(_cellCountY / 2)};
 
             const context = canvas.getContext('2d');
             if (context) {
@@ -133,7 +149,7 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
                 // render coin
                 if (!eatenCoin) {
                     const img = new Image();
-                    img.src = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${cellSize * 2}" height="${cellSize * 2}" viewBox="0 0 198 200" fill="none">
+                    img.src = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${cellSize * 4}" height="${cellSize * 4}" viewBox="0 0 198 200" fill="none">
                         <path d="M170.487 89.2915H161.971V97.8075H170.487V89.2915Z" fill="black"/>
                         <path d="M170.487 80.7751H161.971V89.2912H170.487V80.7751Z" fill="black"/>
                         <path d="M170.487 72.1753H161.971V80.6913H170.487V72.1753Z" fill="black"/>
@@ -291,7 +307,7 @@ function SnakePanel({ snake, milisecond = 100, callback = (result: string) => { 
                         <path d="M33.6398 115.008H25.0394V123.524H33.6398V115.008Z" fill="black"/>
                         <path d="M33.6398 106.408H25.0394V114.924H33.6398V106.408Z" fill="black"/>
                     </svg>`)}`; // Convert SVG string to base64
-                    context.drawImage(img, (_cellCountXRef.current - 5) * cellSize - cellSize / 2, 30 * cellSize - cellSize / 2);
+                    context.drawImage(img, _coinPosition.x * cellSize - cellSize * 1.5, _coinPosition.y * cellSize - cellSize * 1.5);
                 }
             }
         }
