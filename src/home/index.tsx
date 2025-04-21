@@ -237,13 +237,9 @@ function Home() {
                                             {pageState === 'home' || pageState === 'claim-rewards' ? <IconHomeSelected className="main-menu-icon" /> : <IconHome className="main-menu-icon" />}
                                             {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Home</div> : ''}
                                         </div>
-                                        <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('mining'); setSelectedTab('dashboard'); setShowMiningProgress(false); }}>
-                                            {pageState === 'mining' ? <IconMiningSelected className="main-menu-icon" /> : <IconMining className="main-menu-icon" />}
-                                            {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Mining</div> : ''}
-                                        </div>
-                                        <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { handleRewards(); }}>
+                                        <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { handleRewards(); setSelectedTab('dashboard'); }}>
                                             {pageState === 'claim' ? <IconClaimSelected className="main-menu-icon" /> : <IconClaim className="main-menu-icon" />}
-                                            {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Claim</div> : ''}
+                                            {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Reward Claim</div> : ''}
                                         </div>
                                     </div>
                                 </div> : ''
@@ -342,7 +338,7 @@ function Home() {
                                             <div className="w-100 border-5 border-dashed d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                                                 <div className="m-0 text-center">
                                                     <span style={{ lineHeight: 'normal' }}>Mining Progress </span>
-                                                    <span className="text-light-green-950" style={{ lineHeight: 'normal' }}>50%</span>
+                                                    {/* <span className="text-light-green-950" style={{ lineHeight: 'normal' }}>50%</span> */}
                                                 </div>
                                                 <IconArrowUp style={{ width: '27px' }} onClick={() => setShowMiningProgress(true)} />
                                             </div>
