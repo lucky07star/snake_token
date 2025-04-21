@@ -223,7 +223,11 @@ function Home() {
                             <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>{dashboardText}</div>
                         </div>
                         <div className="border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-hidden" style={{ width: '50%' }}>
-                            <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>Mining Progress</div>
+                            <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>
+                            {
+                                pageState === 'home' ? 'MINED TWEETS' : 'REWARD HISTORY'
+                            }    
+                            </div>
                         </div>
                     </div>
                     {/* Main Components */}
@@ -333,23 +337,22 @@ function Home() {
                                         </> : ''
                                     })()}
                                     {/* minized mining progress */}
-                                    {(() => {
+                                    {/* {(() => {
                                         return mobileState ? <>
                                             <div className="w-100 border-5 border-dashed d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                                                 <div className="m-0 text-center">
                                                     <span style={{ lineHeight: 'normal' }}>Mining Progress </span>
-                                                    {/* <span className="text-light-green-950" style={{ lineHeight: 'normal' }}>50%</span> */}
                                                 </div>
                                                 <IconArrowUp style={{ width: '27px' }} onClick={() => setShowMiningProgress(true)} />
                                             </div>
                                         </> : ''
-                                    })()}
+                                    })()} */}
                                 </div> : ''
                         })()}
                         {/* Mining Progress */}
                         {(() => {
                             return !mobileState || (showMiningProgress && selectedTab === 'dashboard') ?
-                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'} border-top-dashed`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
+                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
                                     {
                                         pageState === 'claim-rewards' ? <>
                                             <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="41vh" title="reward history" data={availableRewards.map(item => ({

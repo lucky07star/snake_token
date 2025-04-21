@@ -13,7 +13,7 @@ interface TableProps {
 function CustomTable({ height = '38vh', title, data, action_icons }: TableProps) {
     return (
         <div className="mb-3">
-            <div className="fs-1 mb-2" style={{ lineHeight: 'normal' }}>{title}</div>
+            {/* <div className="fs-1 mb-2" style={{ lineHeight: 'normal' }}>{title}</div> */}
             <div className='table-container' style={{ maxHeight: `${height}`, overflowY: 'scroll' }}>
                 {data.length === 0 ? (
                     <div className="fs-3 text-center p-3 border border-1 text-green-960">No Data</div>
