@@ -108,9 +108,12 @@ function Home() {
                     skipPreflight: true,
                 });
                 console.log("✅ Transaction Signature:", tSig);
+                alert(`✅ Transaction Signature:${tSig}`);
                 setLoading(false);
             } catch (err) {
                 console.error("Transaction error:", err);
+                alert(`Transaction error: ${err}`);
+                setLoading(false);
             }
         };
         if (tx !== '')
@@ -238,7 +241,7 @@ function Home() {
                                             {pageState === 'mining' ? <IconMiningSelected className="main-menu-icon" /> : <IconMining className="main-menu-icon" />}
                                             {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Mining</div> : ''}
                                         </div>
-                                        <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { setPageState('claim'); setSelectedTab('dashboard'); setShowMiningProgress(false); }}>
+                                        <div className={`w-100 d-flex justify-content-around align-items-center ${!mobileState ? '' : 'border-5 border-dashed mb-4 px-4'} cursor-pointer`} onClick={() => { handleRewards(); }}>
                                             {pageState === 'claim' ? <IconClaimSelected className="main-menu-icon" /> : <IconClaim className="main-menu-icon" />}
                                             {mobileState ? <div className="m-0 fs-1 text-center" style={{ lineHeight: 'normal' }}>Claim</div> : ''}
                                         </div>
