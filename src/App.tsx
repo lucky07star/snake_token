@@ -7,6 +7,7 @@ import Home from "./home";
 import Claim from "./claim";
 import TweetMiningPage from "./tweet_mining";
 import NotFoundPage from "./partials/not-found";
+import "./App.css";
 
 function App() {
 
