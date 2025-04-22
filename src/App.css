@@ -1,5 +1,5 @@
 /* Silkscreen font */
-/* @font-face {
+@font-face {
     font-family: 'Silkscreen';
     src: url('./assets/fonts/silkscreen/Silkscreen-Regular.ttf') format('truetype');
     font-weight: 400;
@@ -13,7 +13,7 @@
     font-weight: 700;
     font-style: normal;
     font-display: swap;
-} */
+}
 
 .font-silkscreen {
     font-family: 'Silkscreen' !important;
