@@ -1,19 +1,6 @@
 /* global */
 
-/* Silkscreen font */
-@font-face {
-  font-family: 'Silkscreen';
-  src: url('../public/fonts/silkscreen/Silkscreen-Regular.ttf');
-  font-weight: 400;
-  font-style: normal;
-}
 
-@font-face {
-  font-family: 'Silkscreen-Bold';
-  src: url('../public/fonts/silkscreen/Silkscreen-Bold.ttf');
-  font-weight: 700;
-  font-style: normal;
-}
 
 /* gotham font */
 @font-face {
@@ -49,15 +36,7 @@
   font-family: 'Gotham-Semi-Bold';
 }
 
-.font-silkscreen {
-  font-family: 'Silkscreen' !important;
-  font-weight: 400;
-}
 
-.font-silkscreen-bold {
-  font-family: 'Silkscreen-Bold';
-  font-weight: 700 !important;
-}
 
 * {
   font-family: 'Silkscreen';
