@@ -292,21 +292,54 @@ function Home() {
                                             </>
                                         } else if (pageState === 'claim-rewards') {
                                             return <>
-                                                <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center" style={{ minHeight: `${showRewardHistory ? 'calc(100vh - 480px)' : 'calc(100vh - 300px)'}` }}>
+                                                <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center flex-wrap" style={{ minHeight: `${showRewardHistory ? 'calc(100vh - 280px)' : 'calc(100vh - 230px)'}` }}>
                                                     <div className="w-100 text-center">
-                                                        <div className="fs-5 text-light-green-950 mb-2" style={{ lineHeight: 'normal' }}>Scan code and Claim Rewards</div>
-                                                        <div className="my-4 my-xxl-4">
-                                                            <QRCodeComponent value={"https://snake.ai"} size={144} />
+                                                        {
+                                                            meReward.length !== 0 && <div className="fs-5 text-light-green-950 mb-2" style={{ lineHeight: 'normal' }}>Scan code and Claim Rewards</div>
+                                                        }
+                                                        <div className="my-4 my-xxl-4" style={{color: 'white'}}>
+                                                        {
+                                                            meReward.length === 0 ? "Let’s Mine $SNAKE!  Click 'Post Tweet to Get Reward' to tweet @SnakeAI_X#MineTheSnake. Our AI Snake will reply with a QR code—scan it to claim!" :
+                                                                <QRCodeComponent value={"https://snake.ai"} size={144} />
+                                                        } 
                                                         </div>
-                                                        <div className="fs-6 text-light-green-950 mb-1" style={{ lineHeight: 'normal' }}>Code expires in</div>
-                                                        <div className="fs-5 fw-bolder text-light-green-950" style={{ lineHeight: 'normal' }}>5:00 minutes</div>
+                                                        {
+                                                            meReward.length !== 0 && (
+                                                                <>
+                                                                    <div className="fs-6 text-light-green-950 mb-1" style={{ lineHeight: 'normal' }}>Code expires in</div>
+                                                                    <div className="fs-5 fw-bolder text-light-green-950" style={{ lineHeight: 'normal' }}>5:00 minutes</div>
+                                                                </>
+                                                            )
+                                                        }
                                                     </div>
+                                                    {
+                                                        mobileState ? (
+                                                            <div className="w-100">
+                                                                <div className="border-bottom-dashed border-top-dashed py-1 d-flex justify-content-center w-100">
+                                                                    {
+                                                                        meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center" style={{textDecoration: 'none', color: 'black'}}>Post Tweet!</a> : publicKey as string === userInfo?.wallet_address ? (
+                                                                            <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center">Claim Now!</button>
+                                                                        ) : (
+                                                                            <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5 w-100 text-center" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>
+                                                                        )
+                                                                    }
+                                                                </div>
+                                                                <div className="border-bottom-dashed border-top-dashed py-1 d-flex justify-content-center w-100">
+                                                                    <button onClick={handleModal} className="text-truncate fs-6 fs-xl-12 fs-xxl-14 bg-gray-400 border border-3 border-black p-2 px-5 w-100 text-center">
+                                                                        {
+                                                                            publicKey ? formatString(publicKey) : "Link Wallet"
+                                                                        }
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        ) : ''
+                                                    }
                                                 </div>
                                                 {
                                                     !mobileState ?
                                                         <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
                                                             {
-                                                                publicKey as string === userInfo?.wallet_address && meReward.length !== 0 ? (
+                                                                 meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" style={{textDecoration: 'none', color: 'black'}}>Post Tweet!</a> : publicKey as string === userInfo?.wallet_address ? (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                                 ) : (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>

@@ -17,17 +17,12 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
     const navigate = useNavigate();
     // set state
     const [pageStatus, setPageStatus] = useState<string>(page_status);
-    const [loading, setLoading] = useState<boolean>(true)
 
     const gameResult = (g: string) => {
         if (g === "out") { // move to main page
             setPageStatus("main");
         }
     };
-
-    setTimeout(() => {
-        setLoading(false);
-    }, 2000)
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -40,20 +35,14 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
 
     return (
         <>
-        {
-            loading ? <Loading /> : (
-                <>
             <LandingHeader />
             <div className='w-100 p-2 p-md-4 p-lg-4' style={{ height: '90vh' }}>
                 {
                     (() => {
-                        return pageStatus !== "game" ? <BlankPage component={<SnakePanel milisecond={10} callback={gameResult} />} /> : <MainLanding />
+                        return pageStatus === "game" ? <BlankPage component={<SnakePanel milisecond={50} callback={gameResult} />} /> : <MainLanding />
                     })()
                 }
             </div>
-        </>
-            )
-        }
         </>
     );
 };
