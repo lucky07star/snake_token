@@ -1,7 +1,5 @@
 /* global */
 
-
-
 /* gotham font */
 @font-face {
   font-family: 'Gotham';
@@ -34,23 +32,6 @@
 
 .font-gotham-semi-bold {
   font-family: 'Gotham-Semi-Bold';
-}
-
-
-
-* {
-  font-family: 'Silkscreen';
-  color: black;
-}
-
-html,
-body {
-  width: 100%;
-  height: auto;
-  /* background-color: #87B497 !important; */
-  background: radial-gradient(circle, #87B49750, #87B497);
-  font-family: 'Silkscreen';
-  overflow-x: hidden;
 }
 
 /* scroll bar */

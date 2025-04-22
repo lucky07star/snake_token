@@ -2,12 +2,13 @@ import { ReactComponent as IconLike } from '../svgs/heart-regular.svg';
 import { ReactComponent as IconReply } from '../svgs/refresh.svg';
 import { ReactComponent as IconRetweet } from '../svgs/repost.svg';
 import { ReactComponent as IconTrash } from '../svgs/trash.svg';
+import { ReactComponent as IconTrashWhite } from '../svgs/trash-white.svg';
 
 interface TableProps {
     height?: string;
     title: string;
     data: Array<{ text: string; date: string }>;
-    action_icons: Array<'like' | 'reply' | 'retweet' | 'delete'>;
+    action_icons: Array<'like' | 'reply' | 'retweet' | 'delete' | 'delete-white'>;
 }
 
 function CustomTable({ height = '38vh', title, data, action_icons }: TableProps) {
@@ -30,25 +31,31 @@ function CustomTable({ height = '38vh', title, data, action_icons }: TableProps)
                                     {action_icons.includes("like") && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Like">
                                             <div><IconLike className='table-icon' /></div>
-                                            <div className='icon-text'>LIKE</div>
+                                            <div className='icon-text text-white'>LIKE</div>
                                         </button>
                                     )}
                                     {action_icons.includes('reply') && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Reply">
                                             <div><IconReply className='table-icon' /></div>
-                                            <div className='icon-text'>REPLY</div>
+                                            <div className='icon-text text-white'>REPLY</div>
                                         </button>
                                     )}
                                     {action_icons.includes('retweet') && (
                                         <button className='text-center text-white bg-black border border-0 rounded-1 fs-7 icon-button' aria-label="Retweet">
                                             <div><IconRetweet className='table-icon' /></div>
-                                            <div className='icon-text'>RETWEET</div>
+                                            <div className='icon-text text-white'>RETWEET</div>
                                         </button>
                                     )}
                                     {action_icons.includes('delete') && (
                                         <button className='text-center text-white bg-danger border border-0 rounded-1 fs-7 icon-button' aria-label="Delete">
                                             <div><IconTrash className='table-icon' /></div>
-                                            <div className='icon-text'>DELETE</div>
+                                            <div className='icon-text text-white'>DELETE</div>
+                                        </button>
+                                    )}
+                                    {action_icons.includes('delete-white') && (
+                                        <button className='text-center text-white bg-danger border border-0 rounded-1 fs-7 icon-button' aria-label="Delete">
+                                            <div><IconTrashWhite className='table-icon' /></div>
+                                            <div className='icon-text text-white'>DELETE</div>
                                         </button>
                                     )}
                                 </div>
