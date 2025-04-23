@@ -31,6 +31,8 @@ import postWalletAddress from "../features/wallet/apis/postWalletAddress";
 import { USER, REWARDS } from "../features/users/types";
 import { alertWarn } from "../utils/notify";
 
+import TableData from "../data";
+
 import { formatDateDifference, formatString } from "../libs";
 
 function Home() {
@@ -292,7 +294,7 @@ function Home() {
                                             </>
                                         } else if (pageState === 'claim-rewards') {
                                             return <>
-                                                <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center flex-wrap" style={{ minHeight: `${showRewardHistory ? 'calc(100vh - 280px)' : 'calc(100vh - 230px)'}` }}>
+                                                <div className="py-md-3 p-1 border-bottom-5 border-bottom-dashed bg-black d-flex justify-content-center align-items-center flex-wrap" style={{ minHeight: `${showRewardHistory ? 'calc(100vh - 300px)' : 'calc(100vh - 260px)'}` }}>
                                                     <div className="w-100 text-center">
                                                         {
                                                             meReward.length !== 0 && <div className="fs-5 text-light-green-950 mb-2" style={{ lineHeight: 'normal' }}>Scan code and Claim Rewards</div>
@@ -317,7 +319,7 @@ function Home() {
                                                             <div className="w-100">
                                                                 <div className="border-bottom-dashed border-top-dashed py-1 d-flex justify-content-center w-100">
                                                                     {
-                                                                        meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
+                                                                        meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-4 w-100 text-center" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
                                                                             <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center">Claim Now!</button>
                                                                         ) : (
                                                                             <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5 w-100 text-center" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>
@@ -339,7 +341,7 @@ function Home() {
                                                     !mobileState ?
                                                         <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
                                                             {
-                                                                 meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
+                                                                 meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-4" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                                 ) : (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>
@@ -362,7 +364,7 @@ function Home() {
                                                     </div>
                                                     {showRewardHistory ? <IconArrowDown style={{ width: '27px' }} onClick={() => setShowRewardHistory(false)} /> : <IconArrowUp style={{ width: '27px' }} onClick={() => setShowRewardHistory(true)} />}
                                                 </div>
-                                                {showRewardHistory ? <CustomTable height="120px" title="reward history" data={availableRewards.map(item => ({
+                                                {showRewardHistory ? <CustomTable height="60px" title="Reward History" data={availableRewards.map(item => ({
                                                     text: `${item?.reward_amount} Snake tokens`,
                                                     date: formatDateDifference(item?.block_time ?? "")
                                                 }))} action_icons={['retweet', 'delete']} /> : ''}
@@ -370,7 +372,7 @@ function Home() {
                                         </> : ''
                                     })()}
                                     {/* minized mining progress */}
-                                    {/* {(() => {
+                                    {(() => {
                                         return mobileState ? <>
                                             <div className="w-100 border-5 border-dashed d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                                                 <div className="m-0 text-center">
@@ -379,16 +381,16 @@ function Home() {
                                                 <IconArrowUp style={{ width: '27px' }} onClick={() => setShowMiningProgress(true)} />
                                             </div>
                                         </> : ''
-                                    })()} */}
+                                    })()}
                                 </div> : ''
                         })()}
                         {/* Mining Progress */}
                         {(() => {
                             return !mobileState || (showMiningProgress && selectedTab === 'dashboard') ?
-                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 119px)' }}>
+                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
                                     {
                                         pageState === 'claim-rewards' ? <>
-                                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="41vh" title="reward history" data={availableRewards.map(item => ({
+                                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="calc(100vh - 250px)" title="Reward History" data={availableRewards.map(item => ({
                                                 text: `${item?.reward_amount} Snake tokens`,
                                                 date: formatDateDifference(item?.block_time ?? "")
                                             }))} action_icons={['retweet', 'delete']} />} />
@@ -404,7 +406,7 @@ function Home() {
                                                     :
                                                     ''
                                             }
-                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="60vh" title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
+                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="calc(100vh - 150px)" title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
                                     }
                                 </div> : ''
                         })()}

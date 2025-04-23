@@ -24,6 +24,27 @@ const TableData = {
     }, {
         text: '40 snake tokens',
         date: '02/01/2025'
+    }, {
+        text: 'master badge',
+        date: '3 days ago'
+    }, {
+        text: '186 snake tokens',
+        date: '07/03/2025'
+    }, {
+        text: '40 snake tokens',
+        date: '02/01/2025'
+    }, {
+        text: '1500 Snake tokens',
+        date: 'Yesterday'
+    }, {
+        text: 'master badge',
+        date: '3 days ago'
+    }, {
+        text: '186 snake tokens',
+        date: '07/03/2025'
+    }, {
+        text: '40 snake tokens',
+        date: '02/01/2025'
     }],
     message_table: [{
         icon: '../../images/image1.png',
