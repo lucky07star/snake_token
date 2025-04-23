@@ -299,7 +299,7 @@ function Home() {
                                                         }
                                                         <div className="my-4 my-xxl-4" style={{color: 'white'}}>
                                                         {
-                                                            meReward.length === 0 ? "Let’s Mine $SNAKE!  Click 'Post Tweet to Get Reward' to tweet @SnakeAI_X#MineTheSnake. Our AI Snake will reply with a QR code—scan it to claim!" :
+                                                            meReward.length === 0 ? "Ready to mine $SNAKE?\nCreate your best tweet, tag @playSnakeAI and use #MineTheSnake. Our Snake will detect it, and once she eats it, you'll get a reply with a QR code. 📲\nScan the QR code to claim your tokens!" :
                                                                 <QRCodeComponent value={"https://snake.ai"} size={144} />
                                                         } 
                                                         </div>
@@ -317,7 +317,7 @@ function Home() {
                                                             <div className="w-100">
                                                                 <div className="border-bottom-dashed border-top-dashed py-1 d-flex justify-content-center w-100">
                                                                     {
-                                                                        meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center" style={{textDecoration: 'none', color: 'black'}}>Post Tweet!</a> : publicKey as string === userInfo?.wallet_address ? (
+                                                                        meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
                                                                             <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5 w-100 text-center">Claim Now!</button>
                                                                         ) : (
                                                                             <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5 w-100 text-center" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>
@@ -339,7 +339,7 @@ function Home() {
                                                     !mobileState ?
                                                         <div className="border-bottom-dashed border-top-dashed py-4 d-flex justify-content-end">
                                                             {
-                                                                 meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" style={{textDecoration: 'none', color: 'black'}}>Post Tweet!</a> : publicKey as string === userInfo?.wallet_address ? (
+                                                                 meReward.length === 0 ? <a href={`https://x.com/${userInfo?.twitter_username}`} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5" style={{textDecoration: 'none', color: 'black'}}>START MINING!</a> : publicKey as string === userInfo?.wallet_address ? (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-light-green-950 border border-3 border-black p-2 px-5">Claim Now!</button>
                                                                 ) : (
                                                                     <button onClick={handleClaim} className="fs-6 fs-xl-12 fs-xxl-14 bg-secondary cursor-no-drop border border-3 border-black p-2 px-5" style={{cursor: 'no-drop'}} disabled>Claim Now!</button>
@@ -385,7 +385,7 @@ function Home() {
                         {/* Mining Progress */}
                         {(() => {
                             return !mobileState || (showMiningProgress && selectedTab === 'dashboard') ?
-                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 129px)' }}>
+                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 119px)' }}>
                                     {
                                         pageState === 'claim-rewards' ? <>
                                             <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="41vh" title="reward history" data={availableRewards.map(item => ({
