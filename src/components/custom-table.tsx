@@ -15,9 +15,9 @@ interface TableProps {
 function CustomTable({ height = '38vh', title, data, action_icons }: TableProps) {
     return (
             <div className='table-container' style={{ maxHeight: `${height}`, overflowY: 'scroll' }}>
-                <div style={{minHeight: `${height}`}}>
+                <div style={{minHeight: `${height}`}} className='border-0'>
                     {data.length === 0 ? (
-                        <div className="fs-3 text-center p-3 border border-1 text-green-960 d-flex justify-content-center align-items-center" style={{height: `${height}`}}>
+                        <div className="fs-3 text-center p-3 border border-0 text-green-960 d-flex justify-content-center align-items-center" style={{height: `${height}`}}>
                             <div>
                                 <IconGold />
                                 <div>Your mined tweets will appear here</div>

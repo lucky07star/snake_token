@@ -376,7 +376,7 @@ function Home() {
                                         return mobileState ? <>
                                             <div className="w-100 border-5 border-dashed d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                                                 <div className="m-0 text-center">
-                                                    <span style={{ lineHeight: 'normal' }}>Mining Progress </span>
+                                                    <span style={{ lineHeight: 'normal' }}>Mined Tweets</span>
                                                 </div>
                                                 <IconArrowUp style={{ width: '27px' }} onClick={() => setShowMiningProgress(true)} />
                                             </div>
@@ -387,10 +387,10 @@ function Home() {
                         {/* Mining Progress */}
                         {(() => {
                             return !mobileState || (showMiningProgress && selectedTab === 'dashboard') ?
-                                <div className={`item-stretch ${mobileState ? 'border-dashed py-3 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
+                                <div className={`item-stretch ${mobileState ? 'border-dashed py-1 px-2' : pageState === 'claim-rewards' ? '' : 'border-bottom-dashed'}`} style={{ width: `${showMiningProgress && mobileState ? '100%' : '50%'}`, minHeight: 'calc(100vh - 130px)' }}>
                                     {
                                         pageState === 'claim-rewards' ? <>
-                                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="calc(100vh - 250px)" title="Reward History" data={availableRewards.map(item => ({
+                                            <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 250px)'}`} title="Reward History" data={availableRewards.map(item => ({
                                                 text: `${item?.reward_amount} Snake tokens`,
                                                 date: formatDateDifference(item?.block_time ?? "")
                                             }))} action_icons={['retweet', 'delete']} />} />
@@ -406,7 +406,7 @@ function Home() {
                                                     :
                                                     ''
                                             }
-                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height="calc(100vh - 150px)" title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
+                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 150px)'}`} title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
                                     }
                                 </div> : ''
                         })()}
