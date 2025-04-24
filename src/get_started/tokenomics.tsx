@@ -30,10 +30,6 @@ function TokennomicsPage() {
                     <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4 text-green-960" style={{ lineHeight: 'normal' }}>FIXED SUPPLY:</div>
                     <div className="fs-4 fs-lg-9 fs-xxl-14 font-silkscreen-bold px-4 text-green-960" style={{ lineHeight: 'normal' }}>1 Billion $SNAKE</div>
                     <div className="separator py-4"><div className="separator-5 separator-dashed separator-black"></div></div>
-                    <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4 text-green-960" style={{ lineHeight: 'normal' }}>FINAL CIRCULATION:</div>
-                    <div className="fs-4 fs-lg-9 fs-xl-12 fs-xxl-14 font-silkscreen-bold px-4" style={{ lineHeight: 'normal' }}>750 Million $snake</div>
-                    <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4 text-green-960" style={{ lineHeight: 'normal' }}>(250M burned)</div>
-                    <div className="separator py-4"><div className="separator-5 separator-dashed separator-black"></div></div>
                     <div className="row justify-content-start">
                         <div className="col-md-12 col-lg-4">
                             <div className="fs-4 fs-lg-9 fs-xl-12 fs-xxl-13 px-4 mb-3 text-green-960" style={{ lineHeight: 'normal' }}>FAIR DISTRIBUTION:</div>
@@ -46,6 +42,10 @@ function TokennomicsPage() {
                             <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Marketing & Growth: <span className="font-silkscreen-bold">10%</span></div>
                         </div>
                     </div>
+                    <div className="separator py-4"><div className="separator-5 separator-dashed separator-black"></div></div>
+                    <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4 text-green-960" style={{ lineHeight: 'normal' }}>FINAL CIRCULATION:</div>
+                    <div className="fs-4 fs-lg-9 fs-xl-12 fs-xxl-14 font-silkscreen-bold px-4" style={{ lineHeight: 'normal' }}>750 Million $snake</div>
+                    <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4 text-green-960" style={{ lineHeight: 'normal' }}>(250M burned)</div>
                 </div>
                 <div className="separator py-4"><div className="separator-5 separator-dashed separator-black"></div></div>
             </div>

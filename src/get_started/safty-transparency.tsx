@@ -13,7 +13,7 @@ function SafetyTransparencyPage() {
                             <input type="checkbox" className="custom-checkbox" id="fully_automated" />
                             <label htmlFor="fully_automated" className="custom-label"></label>
                         </div>
-                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>Fully audited smart contracts (by CertiK/OtterSec)</span>
+                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>Fully audited smart contracts</span>
                     </div>
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
                     <div className="d-flex justify-content-start align-items-center gap-3">
@@ -21,7 +21,7 @@ function SafetyTransparencyPage() {
                             <input type="checkbox" className="custom-checkbox" id="alocked_liquidity_pools" />
                             <label htmlFor="alocked_liquidity_pools" className="custom-label"></label>
                         </div>
-                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>aLocked Liquidity pools (12-month lock minimum)</span>
+                        <span className="fs-6 fs-lg-11 fs-xl-12 font-silkscreen-bold text-green-960" style={{ lineHeight: 'normal' }}>aLocked Liquidity pools (6-month lock minimum)</span>
                     </div>
                     <div className="separator py-3"><div className="separator-5 separator-dashed separator-black"></div></div>
                     <div className="d-flex justify-content-start align-items-center gap-3">

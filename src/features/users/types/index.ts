@@ -21,3 +21,11 @@ export type REWARDS = {
     timestamp: string | null,
     block_time: string | null,
 };
+
+export type TWEETS = {
+    id: string,
+    twitter_id: string,
+    twitter_username: string,
+    tweet_id: string,
+    created_at: string,
+};

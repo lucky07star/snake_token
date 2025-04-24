@@ -20,9 +20,9 @@ function App() {
           <Route path="/home/:value" element={<Home />} />
         </Route>
 
-        <Route element={<AuthPrivateRouter />}>
-          <Route path="/claim/:value" element={<Claim />} />
-        </Route>
+        {/* <Route element={<AuthPrivateRouter />}> */}
+        <Route path="/claim/:value" element={<Claim />} />
+        {/* </Route> */}
 
         <Route path="/get-started" element={<GetStartedPage />} />
 

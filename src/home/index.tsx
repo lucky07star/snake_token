@@ -28,7 +28,8 @@ import getProfile from "../features/users/apis/getProfile";
 import getRewards from "../features/users/apis/getRewards";
 import postClaimTx from "../features/wallet/apis/postClaimTx";
 import postWalletAddress from "../features/wallet/apis/postWalletAddress";
-import { USER, REWARDS } from "../features/users/types";
+import getTweets from "../features/users/apis/getTweets";
+import { USER, REWARDS, TWEETS } from "../features/users/types";
 import { alertWarn } from "../utils/notify";
 
 import TableData from "../data";
@@ -52,13 +53,16 @@ function Home() {
 
     const [userInfo, setUserInfo] = useState<USER | null>(null);
     const [availableRewards, setAvailableRewards] = useState<REWARDS[] | []>([]);
+    const [tweetsData, setTweetsData] = useState<TWEETS[] | []>([]);
     const [meReward, setMeReward] = useState<any>([]);
-    const [tx, setTx] = useState<string>('')
+    const [tx, setTx] = useState<string>('');
+    const [qrPng, setQrPng] = useState<any>();
 
     const getProfileAPI = getProfile();
     const getRewardsAPI = getRewards();
     const postClaimTxAPI = postClaimTx();
     const postWalletAddressAPI = postWalletAddress();
+    const getTweetsAPI = getTweets();
 
     useEffect(() => {
         getProfileAPI().then(res => {
@@ -69,6 +73,9 @@ function Home() {
         }).then(data => {
             setMeReward(data.data);
         });
+        getTweetsAPI({}).then(res => {
+            setTweetsData(res.data)
+        })
     }, [])
 
     useEffect(() => {
@@ -301,8 +308,9 @@ function Home() {
                                                         }
                                                         <div className="my-4 my-xxl-4" style={{color: 'white'}}>
                                                         {
-                                                            meReward.length === 0 ? "Ready to mine $SNAKE?\nCreate your best tweet, tag @playSnakeAI and use #MineTheSnake. Our Snake will detect it, and once she eats it, you'll get a reply with a QR code. 📲\nScan the QR code to claim your tokens!" :
-                                                                <QRCodeComponent value={"https://snake.ai"} size={144} />
+                                                            meReward.length === 0 ? "come back after 24hs of you claim your reward and KEEP MINING! 🐍--SSSSS--🐍" :
+                                                                // <QRCodeComponent value={"https://snake.ai"} size={144} />
+                                                                <img src={`${process.env.REACT_APP_BACKEND_URL}/api/v1/qrcode/${meReward[0].id}`} alt="QR Code" />
                                                         } 
                                                         </div>
                                                         {
@@ -406,7 +414,10 @@ function Home() {
                                                     :
                                                     ''
                                             }
-                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 150px)'}`} title="Mined Tweets" data={[]} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
+                                        </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 150px)'}`} title="Mined Tweets" data={tweetsData.map(data => ({
+                                            text: `${data?.twitter_username}'s TWEET`,
+                                            date: formatDateDifference(data?.created_at ?? "")
+                                        }))} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
                                     }
                                 </div> : ''
                         })()}

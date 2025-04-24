@@ -15,7 +15,7 @@ function HowItWorksPage() {
                                 <h2 className="font-silkscreen-bold fs-3 fs-lg-10 text-green-960" style={{ lineHeight: 'normal' }}>TWEET TO EARN:</h2>
                             </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4-semi-bold text-green-960" style={{ lineHeight: 'normal' }}>Simply tweet to @SnakeAI_X with the hashtag #MineTheSnake.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4-semi-bold text-green-960" style={{ lineHeight: 'normal' }}>Simply tweet to @playSnakeAI with the hashtag #MineTheSnake.</p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ function HowItWorksPage() {
                                 <h2 className="font-silkscreen-bold fs-3 fs-lg-10 text-green-960" style={{ lineHeight: 'normal' }}>Tweet to Earn:</h2>
                             </div>
                             <div className="separator px-3 py-3"><div className="separator-3 separator-dashed separator-black"></div></div>
-                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4 text-green-960" style={{ lineHeight: 'normal' }}>After 100 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
+                            <p className="fs-6 fs-xl-13 fs-xxl-16 pb-3 px-2 px-lg-4 text-green-960" style={{ lineHeight: 'normal' }}>After 1 million tweets, mining ends forever, and SNAKE transitions into a community-driven DAO & Web3 Game Studio.</p>
                         </div>
                     </div>
                 </div>
