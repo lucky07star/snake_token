@@ -9,7 +9,10 @@ function MainLanding() {
             <div className="w-100">
                 <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4 w-100">
                     <IconLeftLogo style={{ width: '30vh', height: '30vh' }} />
-                    <span className="fs-1 fs-lg-1 fs-xl-1 font-silkscreen-bold">SNAKE.AI</span>
+                    <div className="text-center">
+                        <div className="fs-1 fs-lg-1 fs-xl-1 font-silkscreen-bold" style={{ lineHeight: 'normal' }}>Play</div>
+                        <div className="fs-1 fs-lg-1 fs-xl-1 font-silkscreen-bold" style={{ lineHeight: 'normal' }}>SNAKE.AI</div>
+                    </div>
                 </div>
                 <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4 mb-4 w-100">
                     <button onClick={() => navigate('/get-started')} className="bg-green-900 text-green-200 border border-0 fs-1" style={{ width: "270px", height: "70px" }}>ENTER</button>

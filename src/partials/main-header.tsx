@@ -22,10 +22,10 @@ function MainHeader() {
         <>
             <div style={{ height: '10vh' }}></div>
             <div className="main-header d-flex fixed-top justify-content-between align-items-center border-bottom border-5 border-black bg-black w-100 pt-2 px-2 px-md-4 px-lg-4 shadow-bottom" style={{ height: '10vh' }}>
-                <div className="d-flex justify-content-start align-items-center gap-2">
+                <a href="/" className="d-flex justify-content-start align-items-center gap-2" style={{textDecoration: 'none'}}>
                     <IconSmallLogo style={{ height: '10vh', width: 'auto' }} />
-                    <span className="fs-1 fs-lg-8 fs-xl-8 text-white main-header-title font-silkscreen-bold">SNAKE.AI</span>
-                </div>
+                    <span className="fs-1 fs-lg-8 fs-xl-8 text-white main-header-title font-silkscreen-bold">PLAYSNAKE.AI</span>
+                </a>
                 <div className="d-flex justify-content-end align-items-center gap-3 h-100 px-2">
                     {
                         authStatus ? (

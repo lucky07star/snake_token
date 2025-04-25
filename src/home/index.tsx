@@ -12,6 +12,7 @@ import CustomTable from "../components/custom-table";
 import TableMiningProgress from "../partials/mining-progress-table";
 import WalletConnectModal from "../features/wallet/componenets/modals/wallet_connect";
 import Loading from "../components/loading";
+import Progressbar from "../components/progressbar";
 
 // icons
 import { ReactComponent as IconHome } from "../svgs/home.svg";
@@ -42,6 +43,7 @@ function Home() {
     const [selectedTab, setSelectedTab] = useState<string>('dashboard');
     const [showMiningProgress, setShowMiningProgress] = useState<boolean>(false);
     const [mobileState, setMobileState] = useState<boolean>(window.innerWidth < 768);
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [showRewardHistory, setShowRewardHistory] = useState<boolean>(false);
     const [dashboardText, setDashboardText] = useState<string>('dashboard');
     const [walletModal, setWalletModal] = useState<boolean>(false);
@@ -207,6 +209,7 @@ function Home() {
 
     useEffect(() => {
         const handleResize = () => {
+            setWindowWidth(window.innerWidth);
             setMobileState(window.innerWidth < 768);
         };
         // resive event
@@ -226,17 +229,23 @@ function Home() {
                     {/* Tab Bars */}
                     <div className="d-flex justify-content-between align-items-end gap-3 pt-md-3 mb-2 row-reverse">
                         <div className={`border-bottom-5 border-bottom-dashed py-3 mobile-tab ${mobileState ? (selectedTab === 'menu' ? '' : 'border-bottom-gray text-gray-61') : ''}`} style={{ width: '130px' }} onClick={() => tabClicked('menu')}>
-                            <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>MENU</div>
+                            <div className="fs-3 text-center" style={{ lineHeight: 'normal' }}>MENU</div>
                         </div>
                         <div className={`border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-tab-fixed ${mobileState ? (selectedTab === 'dashboard' ? '' : 'border-bottom-gray text-gray-61') : ''}`} onClick={() => tabClicked('dashboard')}>
-                            <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>{dashboardText}</div>
+                            <div className="fs-3 text-center" style={{ lineHeight: 'normal' }}>{dashboardText}</div>
                         </div>
-                        <div className="border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-hidden" style={{ width: '50%' }}>
-                            <div className="fs-2 text-center" style={{ lineHeight: 'normal' }}>
+                        <div className="border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-hidden" style={{ width: '30%' }}>
+                            <div className="fs-3 text-center" style={{ lineHeight: 'normal' }}>
                             {
                                 pageState === 'home' ? 'MINED TWEETS' : 'REWARD HISTORY'
                             }    
                             </div>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center border-bottom-5 border-bottom-dashed py-3 mobile-tab mobile-hidden" style={{ width: '20%' }}>
+                            {
+                                windowWidth >= 1280 ? <div className="fs-6 text-center" style={{ lineHeight: 'normal' }}>Mining Progress:</div> : ''
+                            }
+                            <Progressbar value={50} type="solid" />
                         </div>
                     </div>
                     {/* Main Components */}
@@ -310,7 +319,7 @@ function Home() {
                                                         {
                                                             meReward.length === 0 ? "come back after 24hs of you claim your reward and KEEP MINING! 🐍--SSSSS--🐍" :
                                                                 // <QRCodeComponent value={"https://snake.ai"} size={144} />
-                                                                <img src={`${process.env.REACT_APP_BACKEND_URL}/api/v1/qrcode/${meReward[0].id}`} alt="QR Code" />
+                                                                <img src={`${process.env.REACT_APP_BACKEND_URL}/api/v1/qrcode/${meReward[0].id}`} alt="QR Code" width={224} />
                                                         } 
                                                         </div>
                                                         {
@@ -374,7 +383,8 @@ function Home() {
                                                 </div>
                                                 {showRewardHistory ? <CustomTable height="60px" title="Reward History" data={availableRewards.map(item => ({
                                                     text: `${item?.reward_amount} Snake tokens`,
-                                                    date: formatDateDifference(item?.block_time ?? "")
+                                                    date: formatDateDifference(item?.block_time ?? ""),
+                                                    url: `https://x.com/${item.twitter_username}/status/${item.twitter_id}`
                                                 }))} action_icons={['retweet', 'delete']} /> : ''}
                                             </div>
                                         </> : ''
@@ -400,7 +410,8 @@ function Home() {
                                         pageState === 'claim-rewards' ? <>
                                             <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 250px)'}`} title="Reward History" data={availableRewards.map(item => ({
                                                 text: `${item?.reward_amount} Snake tokens`,
-                                                date: formatDateDifference(item?.block_time ?? "")
+                                                date: formatDateDifference(item?.block_time ?? ""),
+                                                url: `https://x.com/${item.twitter_username}/status/${item.twitter_id}`
                                             }))} action_icons={['retweet', 'delete']} />} />
                                             {
                                                 !mobileState ?
@@ -416,7 +427,8 @@ function Home() {
                                             }
                                         </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 150px)'}`} title="Mined Tweets" data={tweetsData.map(data => ({
                                             text: `${data?.twitter_username}'s TWEET`,
-                                            date: formatDateDifference(data?.created_at ?? "")
+                                            date: formatDateDifference(data?.created_at ?? ""),
+                                            url: `https://x.com/${data.twitter_username}/status/${data.twitter_id}`
                                         }))} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
                                     }
                                 </div> : ''
