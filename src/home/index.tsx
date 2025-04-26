@@ -384,7 +384,7 @@ function Home() {
                                                 {showRewardHistory ? <CustomTable height="60px" title="Reward History" data={availableRewards.map(item => ({
                                                     text: `${item?.reward_amount} Snake tokens`,
                                                     date: formatDateDifference(item?.block_time ?? ""),
-                                                    url: `https://x.com/${item.twitter_username}/status/${item.twitter_id}`
+                                                    url: `https://x.com/${item.twitter_username}/status/${item.tweet_twitter_id}`
                                                 }))} action_icons={['retweet', 'delete']} /> : ''}
                                             </div>
                                         </> : ''
@@ -411,7 +411,7 @@ function Home() {
                                             <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 250px)'}`} title="Reward History" data={availableRewards.map(item => ({
                                                 text: `${item?.reward_amount} Snake tokens`,
                                                 date: formatDateDifference(item?.block_time ?? ""),
-                                                url: `https://x.com/${item.twitter_username}/status/${item.twitter_id}`
+                                                url: `https://x.com/${item.twitter_username}/status/${item.tweet_twitter_id}`
                                             }))} action_icons={['retweet', 'delete']} />} />
                                             {
                                                 !mobileState ?
@@ -428,7 +428,7 @@ function Home() {
                                         </> : <TableMiningProgress is_mobile={mobileState} show_minized={mobileState} showedMinized={() => setShowMiningProgress(false)} container_height="calc(100vh-80px)" table={<CustomTable height={`${mobileState ? 'calc(100vh - 210px)' : 'calc(100vh - 150px)'}`} title="Mined Tweets" data={tweetsData.map(data => ({
                                             text: `${data?.twitter_username}'s TWEET`,
                                             date: formatDateDifference(data?.created_at ?? ""),
-                                            url: `https://x.com/${data.twitter_username}/status/${data.twitter_id}`
+                                            url: `https://x.com/${data.twitter_username}/status/${data.tweet_id}`
                                         }))} action_icons={['like', 'reply', 'retweet', 'delete-white']} />} />
                                     }
                                 </div> : ''
