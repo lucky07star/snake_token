@@ -20,6 +20,10 @@ function App() {
           <Route path="/home/:value" element={<Home />} />
         </Route>
 
+        <Route element={<AuthPrivateRouter />}>
+          <Route path="/homee/:value" element={<Home status={true}/>} />
+        </Route>
+
         {/* <Route element={<AuthPrivateRouter />}> */}
         <Route path="/claim/:value" element={<Claim />} />
         {/* </Route> */}

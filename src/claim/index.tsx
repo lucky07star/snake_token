@@ -17,7 +17,7 @@ function ClaimPage() {
             }).then(data => {
                 if(data.result){
                     if(data.data)
-                        navigate(`/home/claim`);
+                        navigate(`/homee/claim`);
                 }
                 else {
                     if(data.data === null)

@@ -37,7 +37,12 @@ import TableData from "../data";
 
 import { formatDateDifference, formatString } from "../libs";
 
-function Home() {
+type Props = {
+    status ?: boolean
+}
+
+function Home({ status = false }: Props) {
+    alert(status)
     // state
     const [pageState, setPageState] = useState<string>('home');
     const [selectedTab, setSelectedTab] = useState<string>('dashboard');
@@ -190,9 +195,14 @@ function Home() {
     }
 
     const handleClaim = () => {
-        postClaimTxAPI().then(data => {
-            setTx(data.data);
-        });
+        if(status === false) {
+            alert("You must access claim page through twitter!");
+            return;
+        } else {
+            postClaimTxAPI().then(data => {
+                setTx(data.data);
+            });
+        }
     }
 
     const handleRewards = () => {
