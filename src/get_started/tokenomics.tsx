@@ -35,11 +35,11 @@ function TokennomicsPage() {
                             <div className="fs-4 fs-lg-9 fs-xl-12 fs-xxl-13 px-4 mb-3 text-green-960" style={{ lineHeight: 'normal' }}>FAIR DISTRIBUTION:</div>
                         </div>
                         <div className="col-md-12 col-lg-8">
-                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Mining Treasury: <span className="font-silkscreen-bold">50.0%</span></div>
-                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Liquidity & MM: <span className="font-silkscreen-bold">15.0%</span></div>
-                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Team & Development: <span className="font-silkscreen-bold">12.5%</span></div>
-                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Marketing & Growth: <span className="font-silkscreen-bold">7.5%</span></div>
-                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Ecosystem Fund/DAO: <span className="font-silkscreen-bold">15.0%</span></div>
+                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Community Mining: <span className="font-silkscreen-bold">50%</span></div>
+                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Liquidity & MM: <span className="font-silkscreen-bold">15%</span></div>
+                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Ecosystem DAO: <span className="font-silkscreen-bold">12.5%</span></div>
+                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Team & Dev: <span className="font-silkscreen-bold">7.5%</span></div>
+                            <div className="fs-4 fs-lg-10 fs-xl-12 fs-xxl-14 px-4" style={{ lineHeight: 'normal' }}>Marketing & Growth: <span className="font-silkscreen-bold">15%</span></div>
                         </div>
                     </div>
                     <div className="separator py-4"><div className="separator-5 separator-dashed separator-black"></div></div>

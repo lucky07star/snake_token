@@ -1,6 +1,5 @@
 
 import { ReactComponent as IconTwitter } from '../svgs/twitter.svg';
-import { ReactComponent as IconDiscord } from '../svgs/discord.svg';
 import { ReactComponent as IconTelegram } from '../svgs/telegram.svg';
 import { ReactComponent as IconSearch } from '../svgs/search.svg';
 import { ReactComponent as IconAlarm } from '../svgs/alarm.svg';
@@ -16,9 +15,9 @@ function GetInvolvedPage() {
                         <IconTwitter style={{ width: '5vh' }} />
                         <span className='text-white fs-6 fs-xl-12 fs-xxl-14 text-start w-100 py-2' style={{ lineHeight: 'normal' }}>FOLLOW US on twitter (x)</span>
                     </a>
-                    <a href='https://telegram.com' className='d-flex justify-content-start align-items-center gap-4 w-75 bg-black px-3 px-lg-5 mb-3 mb-lg-4 mb-xl-5' style={{ minHeight: '80px', textDecoration: 'none' }}>
+                    <a href='#' className='d-flex justify-content-start align-items-center gap-4 w-75 bg-black px-3 px-lg-5 mb-3 mb-lg-4 mb-xl-5' style={{ minHeight: '80px', textDecoration: 'none' }}>
                         <IconTelegram style={{ width: '5vh' }} />
-                        <span className='text-white fs-6 fs-xl-12 fs-xxl-14 text-start w-100' style={{ lineHeight: 'normal' }}>Join our community on telegram</span>
+                        <span className='text-white fs-6 fs-xl-12 fs-xxl-14 text-start w-100' style={{ lineHeight: 'normal' }}>Join our community on Telegram</span>
                     </a>
                     <a href='https://insertweb3.notion.site/snakelitepaper' className='d-flex justify-content-start align-items-center gap-4 w-75 bg-black px-3 px-lg-5' style={{ minHeight: '80px', textDecoration: 'none' }}>
                         <IconSearch style={{ width: '5vh' }} />
