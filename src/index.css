@@ -1375,10 +1375,18 @@ body {
   }
 }
 
-.arrow {
+.arrow-up {
   width: 24px;
   height: 24px;
   border-left: 3px solid black;
   border-top: 3px solid black;
+  transform: rotate(45deg);
+}
+
+.arrow-down {
+  width: 24px;
+  height: 24px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
   transform: rotate(45deg);
 }
