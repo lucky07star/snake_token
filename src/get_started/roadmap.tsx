@@ -65,14 +65,16 @@ function RoadmapPage() {
 
                     {
                         size.width >= 576 ? <>
-                            <div className='col-xl-12 row justify-content-center roadmap-repeat-container'>
-                                <div className="col-xl-9 m-0 p-0">
-                                    <div className='position-relative w-100 border-top-0' style={{ height: '60px', border: 'dashed' }}>
-                                        <div className='position-absolute top-0 start-0 translate-middle-x'><div style={{ marginLeft: '-2px' }} className='start-50 top-0 arrow-up'></div></div>
+                            <div className='col-xl-12' style={{ marginBottom: '50px' }}>
+                                <div className="row justify-content-center roadmap-repeat-container">
+                                    <div className="col-xl-9 m-0 p-0">
+                                        <div className='position-relative w-100 border-top-0' style={{ height: '60px', border: 'dashed' }}>
+                                            <div className='position-absolute top-0 start-0 translate-middle-x'><div style={{ marginLeft: '-2px' }} className='start-50 top-0 arrow-up'></div></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='col-md-12 d-flex justify-content-center position-relative' style={{ marginTop: '-2px' }}>
-                                    <button className='bg-black text-light-green-950 position-absolute top-0 start-50 translate-middle fs-3 font-silkscreen-bold px-5' style={{ height: '60px' }}>Repeat</button>
+                                    <div className='col-md-12 d-flex justify-content-center position-relative' style={{ marginTop: '-2px' }}>
+                                        <button className='bg-black text-light-green-950 position-absolute top-0 start-50 translate-middle fs-3 font-silkscreen-bold px-5' style={{ height: '60px' }}>Repeat</button>
+                                    </div>
                                 </div>
                             </div>
                         </> : <>
