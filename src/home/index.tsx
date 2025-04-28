@@ -42,7 +42,6 @@ type Props = {
 }
 
 function Home({ status = false }: Props) {
-    alert(status)
     // state
     const [pageState, setPageState] = useState<string>('home');
     const [selectedTab, setSelectedTab] = useState<string>('dashboard');
@@ -83,7 +82,7 @@ function Home({ status = false }: Props) {
         getTweetsAPI({}).then(res => {
             setTweetsData(res.data)
         })
-    }, [])
+    }, [pageState])
 
     useEffect(() => {
         if (String(value) === "claim")
@@ -118,7 +117,7 @@ function Home({ status = false }: Props) {
 
                 const rawTx = signedTx.serialize(); // returns a Buffer (or Uint8Array)
 
-                console.log("Here2", rawTx);
+                // console.log("Here2", rawTx);
 
                 const tSig = await sendAndConfirmRawTransaction(connection, rawTx, {
                     skipPreflight: true,
@@ -346,7 +345,8 @@ function Home({ status = false }: Props) {
                                                                 {
                                                                     meReward.length === 0 ? "come back after 24hs of you claim your reward and KEEP MINING! 🐍--SSSSS--🐍" :
                                                                         // <QRCodeComponent value={"https://snake.ai"} size={144} />
-                                                                        <img src={`${process.env.REACT_APP_BACKEND_URL}/api/v1/qrcode/${meReward[0].id}`} alt="QR Code" width={224} />
+                                                                        // <img src={`${process.env.REACT_APP_BACKEND_URL}/api/v1/qrcode/${meReward[0].id}`} alt="QR Code" width={224} />
+                                                                        "come back after 24hs of you claim your reward and KEEP MINING! 🐍--SSSSS--🐍"
                                                                 }
                                                             </div>
                                                             {
