@@ -17,7 +17,7 @@ function TableMiningProgress({ container_height = '80vh', is_mobile = false, tab
             {
                 show_minized ? <div className="w-100 border-5 d-flex justify-content-between align-items-center item-progress-accodion px-3 py-1 cursor-pointer">
                     <div className="m-0 text-center fs-5">
-                        <span className="text-green-960" style={{ lineHeight: 'normal' }}>Mined Tweets</span>
+                        <span className="text-green-960" style={{ lineHeight: 'normal' }}>All Tweets</span>
                         {/* <span className="text-light-green-950" style={{ lineHeight: 'normal' }}>50%</span> */}
                     </div>
                     <IconArrowDown style={{ width: '27px' }} onClick={showedMinized} />

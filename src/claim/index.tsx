@@ -21,7 +21,7 @@ function ClaimPage() {
                 setLoading(false);
                 if(data.result){
                     if(data.data)
-                        navigate(`/homee/claim`);
+                        navigate(`/homee/claim`, { state: { rewardId: value }});
                 }
                 else {
                     if(data.data === null)
