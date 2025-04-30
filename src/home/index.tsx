@@ -279,7 +279,7 @@ function Home({ status = false }: Props) {
                                         <div className={`border-bottom-5 border-bottom-dashed py-2 mobile-tab d-flex justify-content-center align-items-center gap-2`} style={{ width: 'calc(100% - 130px)' }}>
                                             <Progressbar type="solid" value={56} barColor="black" bgColor="#87B497" />
                                             <div className="">
-                                                <div className="fs-7 fs-lg-12 fs-xl-13 fs-xxl-14 fw-bolder text-green-960" style={{ lineHeight: 'normal' }}>MINING PROGRESS: 51%</div>
+                                                <div className="fs-7 fs-lg-12 fs-xl-13 fs-xxl-14 fw-bolder text-green-960" style={{ lineHeight: 'normal' }}>MINING PROGRESS: {(miningProgress?.tweetNumber ?? 0) / 10000}%</div>
                                                 <div className="fs-7 fs-lg-12 fs-xl-13 fs-xxl-14 text-green-960" style={{ lineHeight: 'normal' }}>{miningProgress?.tweetNumber ?? 0} out of 1M tweets mined</div>
                                             </div>
                                         </div>

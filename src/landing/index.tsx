@@ -7,7 +7,6 @@ import LandingHeader from '../partials/landing-header';
 import BlankPage from '../partials/blank';
 import SnakePanel from '../snake';
 import MainLanding from './main';
-import Loading from '../components/loading';
 
 interface LandingPageProps {
     page_status?: string
@@ -30,6 +29,18 @@ function LandingPage({ page_status = 'game' }: LandingPageProps) {
         if (sid) {
             Cookies.set('SID', sid, { expires: 7 });
             navigate('/home/dashboard');
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            navigate(0);
+        };
+        // resive event
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
         }
     }, []);
 
