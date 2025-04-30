@@ -7,39 +7,48 @@ import Home from "./home";
 import Claim from "./claim";
 import TweetMiningPage from "./tweet_mining";
 import NotFoundPage from "./partials/not-found";
+import { Notifications } from 'react-push-notification';
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
 
+  // useEffect(() => {
+  //   Notification.requestPermission();
+  // }, []);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
+    <>
+      <Notifications position="bottom-right" />
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
 
-        <Route element={<AuthPrivateRouter />}>
-          <Route path="/home/:value" element={<Home />} />
-        </Route>
+          <Route element={<AuthPrivateRouter />}>
+            <Route path="/home/:value" element={<Home />} />
+          </Route>
 
-        <Route element={<AuthPrivateRouter />}>
-          <Route path="/homee/:value" element={<Home status={true}/>} />
-        </Route>
+          <Route element={<AuthPrivateRouter />}>
+            <Route path="/homee/:value" element={<Home status={true}/>} />
+          </Route>
 
-        {/* <Route element={<AuthPrivateRouter />}> */}
-        <Route path="/claim/:value" element={<Claim />} />
-        {/* </Route> */}
+          {/* <Route element={<AuthPrivateRouter />}> */}
+          <Route path="/claim/:value" element={<Claim />} />
+          {/* </Route> */}
 
-        <Route path="/get-started" element={<GetStartedPage />} />
+          <Route path="/get-started" element={<GetStartedPage />} />
 
-        {/* <Route path="/home" element={<Home />} /> */}
+          {/* <Route path="/home" element={<Home />} /> */}
 
-        <Route path="/tweet-mining" element={<TweetMiningPage />} />
-        <Route path="/tweet-mining/page1" element={<TweetMiningPage page_number={1} />} />
-        <Route path="/tweet-mining/page2" element={<TweetMiningPage page_number={2} />} />
+          <Route path="/tweet-mining" element={<TweetMiningPage />} />
+          <Route path="/tweet-mining/page1" element={<TweetMiningPage page_number={1} />} />
+          <Route path="/tweet-mining/page2" element={<TweetMiningPage page_number={2} />} />
 
-        <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
 
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

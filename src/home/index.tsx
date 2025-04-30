@@ -31,7 +31,7 @@ import postClaimTx from "../features/wallet/apis/postClaimTx";
 import postWalletAddress from "../features/wallet/apis/postWalletAddress";
 import getTweets from "../features/users/apis/getTweets";
 import { USER, REWARDS, TWEETS } from "../features/users/types";
-import { alertWarn } from "../utils/notify";
+import { alertError, alertSuccess, alertWarn } from "../utils/notify";
 
 import TableData from "../data";
 
@@ -120,7 +120,8 @@ function Home({ status = false }: Props) {
         const run = async () => {
             const { solana } = window as any;
             if (!solana?.isPhantom) {
-                alert("Phantom not found");
+                // alert("Phantom not found");
+                notify(alertError("Phantom not found"));
                 return;
             }
 
@@ -150,11 +151,13 @@ function Home({ status = false }: Props) {
                     skipPreflight: true,
                 });
                 console.log("✅ Transaction Signature:", tSig);
-                alert(`✅ Transaction Signature:${tSig}`);
+                // alert(`✅ Transaction Signature:${tSig}`);
+                notify(alertSuccess(`✅ Transaction Signature:${tSig}`));
                 setLoading(false);
             } catch (err) {
                 console.error("Transaction error:", err);
-                alert(`Transaction error: ${err}`);
+                // alert(`Transaction error: ${err}`);
+                notify(alertSuccess(`Transaction error: ${err}`));
                 setLoading(false);
             }
         };
@@ -169,7 +172,7 @@ function Home({ status = false }: Props) {
     }
 
     const handleModal = () => {
-        setWalletModal(true)
+        setWalletModal(true);
     }
 
     const clsoeModal = () => {
@@ -182,11 +185,11 @@ function Home({ status = false }: Props) {
             connect().then(data => {
                 if (userInfo?.wallet_address === "" || userInfo?.wallet_address === null || userInfo?.wallet_address === undefined) {
                     notify(alertWarn("Wallet Address can be updated! \n Do you make sure to set this wallet address?"));
-                    alert("Wallet Address can be updated! \n Do you make sure to set this wallet address?");
+                    // alert("Wallet Address can be updated! \n Do you make sure to set this wallet address?");
 
                     if (!walletAvailable) {
                         notify(alertWarn("Phantom Walllet is not available on this browser."));
-                        alert("Phantom Walllet is not available on this browser.");
+                        // alert("Phantom Walllet is not available on this browser.");
                         clsoeModal();
                         return;
                     }
@@ -202,7 +205,7 @@ function Home({ status = false }: Props) {
                 else {
                     if (userInfo?.wallet_address !== data as string) {
                         notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
-                        alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
+                        // alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                         disconnect();
                         clsoeModal();
                     }
@@ -212,7 +215,7 @@ function Home({ status = false }: Props) {
         } else {
             if (publicKey !== userInfo?.wallet_address) {
                 notify(alertWarn(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`));
-                alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
+                // alert(`You have already set your phantom wallet. \n You must connect to that wallet (${userInfo?.wallet_address})`);
                 disconnect();
                 clsoeModal();
             }
@@ -222,7 +225,8 @@ function Home({ status = false }: Props) {
 
     const handleClaim = () => {
         if(status === false || rewardId === undefined) {
-            alert("You must access claim page through twitter!");
+            // alert("You must access claim page through twitter!");
+            notify(alertWarn("You must access claim page through twitter!"));
             return;
         } else {
             postClaimTxAPI({
@@ -231,7 +235,8 @@ function Home({ status = false }: Props) {
                 if(data.result)
                     setTx(data.data);
                 else 
-                    alert("You must access claim page through twitter!")
+                    notify(alertWarn("You must access claim page through twitter!"));
+                    // alert("You must access claim page through twitter!");
             });
         }
     }

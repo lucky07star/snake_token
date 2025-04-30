@@ -28,7 +28,7 @@ export default function useGetAPI<T>(): (options: OptionsType) => Promise<Succes
                 params: params,
                 signal: signal, // Pass the AbortSignal here
             });
-            notify(alertSuccess(response.data.msg));
+            // notify(alertSuccess(response.data.msg));
             return { data: response.data, error: null };
         } catch (error: any) {
             if (axios.isCancel(error)) {

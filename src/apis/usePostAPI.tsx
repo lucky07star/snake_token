@@ -52,7 +52,8 @@ export default function usePostAPI<T = undefined>(): (options: OptionsType) => P
     } catch (error: any) {
       console.error(error);
       // 
-      notify(alertError(sendRequest ? '1' : '2'));
+      // notify(alertError(sendRequest ? '1' : '2'));
+      notify(alertError("Get request error"));
       return { result: false, error: error ,hasResponse: null};
     }
   };
