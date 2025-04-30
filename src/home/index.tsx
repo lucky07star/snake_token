@@ -90,9 +90,9 @@ function Home({ status = false }: Props) {
         });
         const getRewardPool = async () => {
             const data = await fetchRewardPoolData();
-            setMiningProgress(data)
+            setMiningProgress(data);
         };
-        getRewardPool()
+        getRewardPool();
     }, [pageState])
 
     useEffect(() => {
@@ -153,6 +153,10 @@ function Home({ status = false }: Props) {
                 console.log("✅ Transaction Signature:", tSig);
                 // alert(`✅ Transaction Signature:${tSig}`);
                 notify(alertSuccess(`✅ Transaction Signature:${tSig}`));
+
+                const data = await fetchRewardPoolData();
+                setMiningProgress(data);
+
                 setLoading(false);
             } catch (err) {
                 console.error("Transaction error:", err);
